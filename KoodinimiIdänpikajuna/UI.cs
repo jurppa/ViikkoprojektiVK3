@@ -10,8 +10,9 @@ namespace KoodinimiIdänpikajuna
     class UI
     {
         
-        // Kysyy mistä asemalta minne katsotaan junia =>  mitä tulostetaan vastauksesta
-        // 
+        /// <summary>
+        /// FromTo() Metodissa kysytään lähtö, pääteasema, ja päivämäärä jonka jälkeen tulostetaan lista lähtevistä junista.
+        /// </summary>
         public void FromTo()
         {
             Console.WriteLine("Lähtöasema: ");
