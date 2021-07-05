@@ -90,7 +90,7 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
-        public static Train NextDepartingTrain(string stationName)
+        public static List<Train> NextDepartingTrain(string stationName)
         {
             string json = "";
             string nextDepartureUrl = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?arrived_trains=5&arriving_trains=5";
@@ -104,18 +104,18 @@ namespace KoodinimiIdänpikajuna
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
             DateTime now = DateTime.Now.ToLocalTime();
-            
-            Train nextTrain = res.Where(x => x.timeTableRows[0].scheduledTime > ))
 
-            return nextTrain;
+            var nextDepartingTrain = res.Where(x => x.timeTableRows[0].scheduledTime > now);
+
+            return res;
         }
 
-      
 
 
 
 
 
 
-}
+
+    }
 }
