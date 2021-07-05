@@ -86,7 +86,22 @@ namespace KoodinimiIdänpikajuna
 
             
             }
-       }
-    } 
+
+            var res = JsonConvert.DeserializeObject<List<Train>>(json);
+            DateTime now = DateTime.Now.ToLocalTime();
+            
+            Train nextTrain = res.Where(x => x.timeTableRows[0].scheduledTime > ))
+
+            return nextTrain;
+        }
+
+      
+
+
+
+
+
+
+}
 }
     
