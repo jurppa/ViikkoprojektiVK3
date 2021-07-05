@@ -103,7 +103,9 @@ namespace KoodinimiIdänpikajuna
             }
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            Train nextTrain = res.First();
+            DateTime now = DateTime.Now.ToLocalTime();
+            
+            Train nextTrain = res.Where(x => x.timeTableRows[0].scheduledTime > ))
 
             return nextTrain;
         }

@@ -8,8 +8,7 @@ namespace KoodinimiIdänpikajuna
         {
             UI ui = new UI();
 
-            ui.TrainInfo();
-           // ui.FromTo();
+            //ui.FromTo();
             // testing Ari
             //Console.WriteLine("Hello World!");
             //var testi = APIUtil.TrainFromTo("TPE", "HKI");
@@ -18,7 +17,8 @@ namespace KoodinimiIdänpikajuna
             var testiWagon = APIUtil.WagonInfo(date, 151);
 
             Console.WriteLine(testiWagon.catering);
-
+           var testinen = APIUtil.NextDepartingTrain("TPE");
+            Console.WriteLine(testinen.timeTableRows[0].scheduledTime);
 
 
         }
