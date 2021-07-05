@@ -12,17 +12,24 @@ namespace KoodinimiIdänpikajuna
         
         // Kysyy mistä asemalta minne katsotaan junia =>  mitä tulostetaan vastauksesta
         // 
-        public void MistäMinne()
+        public void FromTo()
         {
             Console.WriteLine("Lähtöasema: ");
             var asema1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
             var asema2 = Console.ReadLine();
+            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy): ");
+            DateTime date = Convert.ToDateTime(Console.ReadLine());
 
             List<Train> junatASemaltaAemalle = APIUtil.TrainFromTo(asema1, asema2);
-
-
             
+        }
+
+        public void NextTrain()
+        {
+            Console.WriteLine("Lähtöasema: ");
+            var asema1 = Console.ReadLine();
+            DateTime date = DateTime.Now;
         }
 
     }
