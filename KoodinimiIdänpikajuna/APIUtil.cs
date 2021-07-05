@@ -14,7 +14,7 @@ namespace KoodinimiIdänpikajuna
     class APIUtil
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
-        private string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
+        private const string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
@@ -45,7 +45,30 @@ namespace KoodinimiIdänpikajuna
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
         }
-        public string[] getFullName = 
+        
+        public static string GetStationFullNames(string shortNameOne, string shortNameTwo)
+        {
+            string json = "";
+            string[] nameOneSplitted = shortNameOne.Split(" ");
+            string[] nameTwoSplitted = shortNameTwo.Split(" ");
+
+
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(allStations).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+            var res = JsonConvert.DeserializeObject<List<Station>>(json);
+            var stationOne = res.First(x => x.stationName == shortNameOne);
+            var stationTwo = res.First(x => x.stationName == shortNameTwo);
+            
+            
+             
+
+            return stationOne.stationShortCode;
+        }
 
     }
 }
