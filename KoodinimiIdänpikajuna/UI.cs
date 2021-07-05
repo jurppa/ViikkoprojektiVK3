@@ -23,7 +23,6 @@ namespace KoodinimiIdänpikajuna
             DateTime date = DateTime.Parse(Console.ReadLine());
 
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2);
-           
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
@@ -37,6 +36,8 @@ namespace KoodinimiIdänpikajuna
         }
         public void NextTrain()
         {
+            
+
             Console.WriteLine("Lähtöasema: ");
             var station1 = Console.ReadLine();
             List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
