@@ -44,7 +44,8 @@ namespace KoodinimiIdänpikajuna
             var testiWagon = APIUtil.WagonInfo(date, 151);
 
             Console.WriteLine(testiWagon.catering);
-
+           var testinen = APIUtil.NextDepartingTrain("TPE");
+            Console.WriteLine(testinen.timeTableRows[0].scheduledTime);
 
 
         }
