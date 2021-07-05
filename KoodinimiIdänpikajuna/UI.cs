@@ -33,13 +33,15 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].type);
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
 
+
             }
 
         }
         public void NextTrain()
         {
             Console.WriteLine("Lähtöasema: ");
-            var asema1 = Console.ReadLine();
+            var station1 = Console.ReadLine();
+            List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
             DateTime date = DateTime.Now;
         }
         public void TrainInfo()
