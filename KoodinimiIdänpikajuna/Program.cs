@@ -8,12 +8,15 @@ namespace KoodinimiIdänpikajuna
         {
             UI ui = new UI();
 
-            ui.FromTo();
+            //ui.FromTo();
             // testing Ari
             //Console.WriteLine("Hello World!");
-            var testi = APIUtil.TrainFromTo("TPE", "HKI");
+            //var testi = APIUtil.TrainFromTo("TPE", "HKI");
 
-           
+            string date = "2021.07.05";
+            var testiWagon = APIUtil.WagonInfo(date, 151);
+
+            Console.WriteLine(testiWagon.catering);
 
 
 

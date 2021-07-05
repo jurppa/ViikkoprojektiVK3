@@ -71,10 +71,10 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
             
         }
-        public static Wagon WagonInfo(DateTime date, int trainNumber)
+        public static Wagon WagonInfo(string date, int trainNumber)
         {
             string json = "";
-            string wagonUrl = WAGONURL + date + @"\" + trainNumber;
+            string wagonUrl = WAGONURL + date + @"/" + trainNumber;
             using (var client = new HttpClient(GetZipHandler()))
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
