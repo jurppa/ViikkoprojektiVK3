@@ -64,10 +64,11 @@ namespace KoodinimiIdänpikajuna
             //var stationOne = res.First(x => x.stationName == shortNameOne);
             //var stationTwo = res.First(x => x.stationName == shortNameTwo);
             
-            
-             
 
-            return stationOne.stationShortCode;
+
+
+            return stationOne.stationShortCode + stationTwo.stationShortCode;
+            
         }
 
     }
