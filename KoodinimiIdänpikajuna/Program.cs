@@ -8,7 +8,8 @@ namespace KoodinimiIdänpikajuna
         {
             UI ui = new UI();
 
-            //ui.FromTo();
+            ui.TrainInfo();
+           // ui.FromTo();
             // testing Ari
             //Console.WriteLine("Hello World!");
             //var testi = APIUtil.TrainFromTo("TPE", "HKI");
