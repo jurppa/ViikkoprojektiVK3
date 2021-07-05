@@ -30,8 +30,8 @@ namespace KoodinimiIdänpikajuna
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-           var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            
+            var res = JsonConvert.DeserializeObject<List<Train>>(json);
+
             return res;
 
 
@@ -45,7 +45,7 @@ namespace KoodinimiIdänpikajuna
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
         }
-        private 
+        public string[] getFullName = 
 
     }
 }
