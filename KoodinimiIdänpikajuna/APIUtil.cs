@@ -17,7 +17,7 @@ namespace KoodinimiIdänpikajuna
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
      
 
-        public static List<Juna> ProcessRequests(string fromStation, string toStation)
+        public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
 
 
@@ -31,7 +31,7 @@ namespace KoodinimiIdänpikajuna
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-           var res = JsonConvert.DeserializeObject<List<Juna>>(json);
+           var res = JsonConvert.DeserializeObject<List<Train>>(json);
             
             return res;
 
