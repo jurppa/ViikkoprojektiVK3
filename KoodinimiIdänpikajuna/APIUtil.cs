@@ -22,8 +22,9 @@ namespace KoodinimiIdänpikajuna
         {
             string[] stationNames = new string[2];
             if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
-
-            string[] stationNames = GetStationFullNames(fromStation, toStation);
+            else { 
+            stationNames = GetStationFullNames(fromStation, toStation);
+            }
             string json = "";
             string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
@@ -53,8 +54,8 @@ namespace KoodinimiIdänpikajuna
         public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
             string json = "";
-            string[] nameOneSplitted = stationNameOne.Split(" ");
-            string[] nameTwoSplitted = stationNameTwo.Split(" ");
+            string[] nameOneSplitted = shortNameOne.Split(" ");
+            string[] nameTwoSplitted = shortNameTwo.Split(" ");
 
 
             using (var client = new HttpClient(GetZipHandler()))
