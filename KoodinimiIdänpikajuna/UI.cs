@@ -14,8 +14,9 @@ namespace KoodinimiIdänpikajuna
         // 
         public void MistäMinne()
         {
-            Console.WriteLine("Mistä asemalta minne mennään? Käytä lyhenteitä, esim TPE = Tampere HKI = Helsinki");
+            Console.WriteLine("Lähtöasema: ");
             var asema1 = Console.ReadLine();
+            Console.WriteLine("Pääteasema: ");
             var asema2 = Console.ReadLine();
 
             List<Train> junatASemaltaAemalle = APIUtil.TrainFromTo(asema1, asema2);
