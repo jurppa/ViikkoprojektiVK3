@@ -16,13 +16,14 @@ namespace KoodinimiIdänpikajuna
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
         private const string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
         private const string WAGONURL = "https://rata.digitraffic.fi/api/v1/compositions/";
+        private const string GOINGTHROUGHURL = "https://rata.digitraffic.fi/api/v1/live-trains/station";
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
 
-            string[] statioNames = GetStationFullNames(fromStation, toStation);
+            string[] stationNames = GetStationFullNames(fromStation, toStation);
             string json = "";
-            string url = $"{APIURL}/schedules?departure_station={statioNames[0]}&arrival_station={statioNames[1]}";
+            string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
             using (var client = new HttpClient(GetZipHandler()))
             {
@@ -46,7 +47,7 @@ namespace KoodinimiIdänpikajuna
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
         }
-        
+
         public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
             string json = "";
@@ -62,36 +63,28 @@ namespace KoodinimiIdänpikajuna
                 json = responseString;
             }
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName.Contains(nameOneSplitted[0]));
-            var stationTwo = res.First(x => x.stationName.Contains(nameTwoSplitted[0]));
+            var stationOne = res.First(x => x.stationName == nameOneSplitted[0]);
+            var stationTwo = res.First(x => x.stationName == nameTwoSplitted[0]);
 
             string[] shortNames = { stationOne.stationShortCode, stationTwo.stationShortCode };
 
 
             return shortNames;
-            
+
         }
-        public static Wagon WagonInfo(string date, int trainNumber)
+        public static string[] IfGoingThrough(string GoingThrough)
         {
+            string[] GonnagoThrough = IfGoingThrough(GoingThrough);
             string json = "";
-            string wagonUrl = WAGONURL + date + @"/" + trainNumber;
-            using (var client = new HttpClient(GetZipHandler()))
+            string url = $"{APIURL}/live-trains/station/{GoingThrough}";
+
+            using (var client = new HttpClient(GetZipHandler())
             {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(wagonUrl).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
+
+
+            
             }
-
-            var res = JsonConvert.DeserializeObject<Wagon>(json);
-
-            return res;
-        }
-
-
-
-
-
-
-    }
+       }
+    } 
 }
+    
