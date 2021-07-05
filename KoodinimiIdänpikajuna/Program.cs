@@ -31,7 +31,7 @@ namespace KoodinimiIdänpikajuna
                     ui.IntermediateStation();
                     break;
                 default:
-                    Console.WriteLine("Cannot be found");
+                    Console.WriteLine("Error 404");
                     break;
             }
             ui.TrainInfo();
