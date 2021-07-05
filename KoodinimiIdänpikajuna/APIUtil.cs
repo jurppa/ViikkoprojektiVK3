@@ -90,10 +90,30 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
+        public static Train NextDepartingTrain(string stationName)
+        {
+            string json = "";
+            string nextDepartureUrl = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?arrived_trains=5&arriving_trains=5";
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(nextDepartureUrl).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+
+            var res = JsonConvert.DeserializeObject<List<Train>>(json);
+            Train nextTrain = res.First();
+
+            return nextTrain;
+        }
+
+      
 
 
 
 
 
-    }
+
+}
 }
