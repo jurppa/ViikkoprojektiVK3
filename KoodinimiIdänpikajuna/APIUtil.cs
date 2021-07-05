@@ -15,6 +15,7 @@ namespace KoodinimiIdänpikajuna
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
         private const string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
+        private const string WAGONURL = "https://rata.digitraffic.fi/api/v1/compositions/"
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
@@ -69,6 +70,14 @@ namespace KoodinimiIdänpikajuna
 
             return stationOne.stationShortCode + stationTwo.stationShortCode;
             
+        }
+
+       
+
+
+        public static List<Wagon> GetWagonInfo(int trainNumber)
+        {
+
         }
 
     }
