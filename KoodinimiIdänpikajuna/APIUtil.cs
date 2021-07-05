@@ -1,5 +1,6 @@
 ﻿using KoodinimiIdänpikajuna.Model;
 using Newtonsoft.Json;
+using RataDigiTraffic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace KoodinimiIdänpikajuna
     class APIUtil
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
-        private static readonly HttpClient client = new HttpClient();
+     
 
-        public static List<Train> ProcessRequests(string fromStation, string toStation)
+        public static List<Juna> ProcessRequests(string fromStation, string toStation)
         {
+
+
             string json = "";
             string url = $"{APIURL}/schedules?departure_station={fromStation}&arrival_station={toStation}";
 
@@ -28,8 +31,11 @@ namespace KoodinimiIdänpikajuna
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-            List<Train> res = JsonConvert.DeserializeObject<List<Train>>(json);
+           var res = JsonConvert.DeserializeObject<List<Juna>>(json);
+            
             return res;
+
+
 
         }
 

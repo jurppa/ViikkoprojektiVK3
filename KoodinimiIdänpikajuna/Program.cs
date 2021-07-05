@@ -8,12 +8,13 @@ namespace KoodinimiIdänpikajuna
         {
             // testing Ari
             Console.WriteLine("Hello World!");
-            var testi = APIUtil.ProcessRequests("Tampere", "Helsinki");
-            Console.WriteLine(testi.Count);
+            var testi = APIUtil.TrainFromTo("TPE", "HKI");
             foreach (var item in testi)
             {
-                Console.WriteLine(testi);
+                Console.WriteLine(item.trainNumber);
             }
+            
+           
 
         }
         //testing testing Thien
