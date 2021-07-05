@@ -62,8 +62,8 @@ namespace KoodinimiIdänpikajuna
                 json = responseString;
             }
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName == nameOneSplitted[0]);
-            var stationTwo = res.First(x => x.stationName == nameTwoSplitted[0]);
+            var stationOne = res.First(x => x.stationName.Contains(nameOneSplitted[0]));
+            var stationTwo = res.First(x => x.stationName.Contains(nameTwoSplitted[0]));
 
             string[] shortNames = { stationOne.stationShortCode, stationTwo.stationShortCode };
 
