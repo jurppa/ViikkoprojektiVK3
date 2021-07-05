@@ -17,4 +17,6 @@ namespace KoodinimiIdänpikajuna.Model
         public decimal longitude;//longitude: decimal Liikennepaikan longitudi "WGS 84"-muodossa
         public string type;//type: string Liikennepaikan tyyppi.STATION = asema, STOPPING_POINT = seisake, TURNOUT_IN_THE_OPEN_LINE = linjavaihde
     }
+
 }
+

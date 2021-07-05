@@ -1,6 +1,5 @@
 ﻿using KoodinimiIdänpikajuna.Model;
 using Newtonsoft.Json;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace KoodinimiIdänpikajuna
     class APIUtil
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
-     
+        private string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
@@ -31,8 +30,8 @@ namespace KoodinimiIdänpikajuna
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-           var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            
+            var res = JsonConvert.DeserializeObject<List<Train>>(json);
+
             return res;
 
 
@@ -46,7 +45,7 @@ namespace KoodinimiIdänpikajuna
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
         }
-
+        public string[] getFullName = 
 
     }
 }
