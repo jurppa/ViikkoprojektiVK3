@@ -71,11 +71,27 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
             
         }
+        public static Wagon WagonInfo(DateTime date, int trainNumber)
+        {
+            string json = "";
+            string wagonUrl = WAGONURL + date + @"\" + trainNumber;
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(wagonUrl).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
 
-       
+            var res = JsonConvert.DeserializeObject<Wagon>(json);
+
+            return res;
+        }
 
 
-      
+
+
+
 
     }
 }
