@@ -1,4 +1,5 @@
 ﻿using KoodinimiIdänpikajuna.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace KoodinimiIdänpikajuna
             client.DefaultRequestHeaders.Add("accept-encoding", "gzip");
             var response = client.GetAsync($"{APIURL}/metadata/stations").Result;
             string json = response.Content.ReadAsStringAsync().Result;
-            List<Station> res = JsonConvert.DeserializeObject<List<Liikennepaikka>>(json);
+            List<Station> res = JsonConvert.DeserializeObject<List<Station>>(json);
         }
             
 
