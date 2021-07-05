@@ -1,9 +1,12 @@
 ﻿using KoodinimiIdänpikajuna.Model;
 using Newtonsoft.Json;
+using RataDigiTraffic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,19 +15,37 @@ namespace KoodinimiIdänpikajuna
     class APIUtil
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
-        private static readonly HttpClient client = new HttpClient();
+     
 
-        public static async Task ProcessRequests()
+        public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("accept-encoding", "gzip");
-            var response = client.GetAsync($"{APIURL}/metadata/stations").Result;
-            string json = response.Content.ReadAsStringAsync().Result;
-            List<Station> res = JsonConvert.DeserializeObject<List<Station>>(json);
-        }
+
+
+            string json = "";
+            string url = $"{APIURL}/schedules?departure_station={fromStation}&arrival_station={toStation}";
+
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(url).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+           var res = JsonConvert.DeserializeObject<List<Train>>(json);
             
+            return res;
+
+
+
+        }
+
+        private static HttpClientHandler GetZipHandler()
+        {
+            return new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+        }
 
 
     }
