@@ -36,12 +36,12 @@ namespace KoodinimiIdänpikajuna
         }
         public void NextTrain()
         {
-            
-
             Console.WriteLine("Lähtöasema: ");
             var station1 = Console.ReadLine();
-          //  List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
+          
             DateTime date = DateTime.Now;
+            var train = APIUtil.NextDepartingTrain(station1);
+            Console.WriteLine();
         }
         public void TrainInfo()
         {
@@ -64,6 +64,7 @@ namespace KoodinimiIdänpikajuna
         {
             
         }
+        
 
     }
 }
