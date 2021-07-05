@@ -32,6 +32,7 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].type);
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
 
+
             }
 
         }
@@ -40,13 +41,19 @@ namespace KoodinimiIdänpikajuna
             
 
             Console.WriteLine("Lähtöasema: ");
-            var asema1 = Console.ReadLine();
+            var station1 = Console.ReadLine();
+            List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
             DateTime date = DateTime.Now;
         }
         public void TrainInfo()
         {
             Console.WriteLine("Anna junan numero: ");
-            var info = Console.ReadLine();
+            var trainNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Lähtöpäivämäärä: ");
+            var date = Console.ReadLine();
+
+            APIUtil.WagonInfo(date, trainNumber);
+
 
         }
         public void IntermediateStation()
