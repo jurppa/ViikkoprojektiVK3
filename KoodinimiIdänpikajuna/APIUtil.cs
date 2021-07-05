@@ -19,10 +19,12 @@ namespace KoodinimiIdänpikajuna
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
+            string[] stationNames = new string[2];
+            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
 
-            string[] statioNames = GetStationFullNames(fromStation, toStation);
+            else { stationNames = GetStationFullNames(fromStation, toStation); }
             string json = "";
-            string url = $"{APIURL}/schedules?departure_station={statioNames[0]}&arrival_station={statioNames[1]}";
+            string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
             using (var client = new HttpClient(GetZipHandler()))
             {
@@ -47,11 +49,11 @@ namespace KoodinimiIdänpikajuna
             };
         }
         
-        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
+        public static string[] GetStationFullNames(string stationNameOne, string stationNameTwo)
         {
             string json = "";
-            string[] nameOneSplitted = shortNameOne.Split(" ");
-            string[] nameTwoSplitted = shortNameTwo.Split(" ");
+            string[] nameOneSplitted = stationNameOne.Split(" ");
+            string[] nameTwoSplitted = stationNameTwo.Split(" ");
 
 
             using (var client = new HttpClient(GetZipHandler()))
