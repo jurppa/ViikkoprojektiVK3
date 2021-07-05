@@ -20,6 +20,8 @@ namespace KoodinimiIdänpikajuna
 
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
+            string[] stationNames = new string[2];
+            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
 
             string[] stationNames = GetStationFullNames(fromStation, toStation);
             string json = "";
@@ -51,8 +53,8 @@ namespace KoodinimiIdänpikajuna
         public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
             string json = "";
-            string[] nameOneSplitted = shortNameOne.Split(" ");
-            string[] nameTwoSplitted = shortNameTwo.Split(" ");
+            string[] nameOneSplitted = stationNameOne.Split(" ");
+            string[] nameTwoSplitted = stationNameTwo.Split(" ");
 
 
             using (var client = new HttpClient(GetZipHandler()))
