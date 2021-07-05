@@ -40,7 +40,7 @@ namespace KoodinimiIdänpikajuna
 
             Console.WriteLine("Lähtöasema: ");
             var station1 = Console.ReadLine();
-            //List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
+          //  List<Train> trainsFrom = APIUtil.TrainFromTo(station1);
             DateTime date = DateTime.Now;
         }
         public void TrainInfo()
