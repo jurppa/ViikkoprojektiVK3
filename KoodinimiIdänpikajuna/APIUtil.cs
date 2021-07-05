@@ -61,13 +61,14 @@ namespace KoodinimiIdänpikajuna
                 json = responseString;
             }
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName == shortNameOne);
-            var stationTwo = res.First(x => x.stationName == shortNameTwo);
+            //var stationOne = res.First(x => x.stationName == shortNameOne);
+            //var stationTwo = res.First(x => x.stationName == shortNameTwo);
             
-            
-             
 
-            return stationOne.stationShortCode;
+
+
+            return stationOne.stationShortCode + stationTwo.stationShortCode;
+            
         }
 
     }
