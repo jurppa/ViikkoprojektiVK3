@@ -68,7 +68,7 @@ namespace KoodinimiIdänpikajuna
 
 
 
-            return stationOne.stationShortCode + stationTwo.stationShortCode;
+            return nameOneSplitted[0] + nameTwoSplitted[0];
             
         }
 

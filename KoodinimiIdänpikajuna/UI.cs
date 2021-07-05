@@ -15,13 +15,13 @@ namespace KoodinimiIdänpikajuna
         public void FromTo()
         {
             Console.WriteLine("Lähtöasema: ");
-            var asema1 = Console.ReadLine();
+            var station1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
-            var asema2 = Console.ReadLine();
+            var station2 = Console.ReadLine();
             Console.WriteLine("Anna päivämäärä(dd.mm.yyyy): ");
-            DateTime date = Convert.ToDateTime(Console.ReadLine());
+            DateTime date = DateTime.Parse(Console.ReadLine());
 
-            List<Train> trainsFromTo = APIUtil.TrainFromTo(asema1, asema2);
+            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2);
            
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
