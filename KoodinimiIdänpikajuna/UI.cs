@@ -21,8 +21,19 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Anna päivämäärä(dd.mm.yyyy): ");
             DateTime date = Convert.ToDateTime(Console.ReadLine());
 
-            List<Train> junatASemaltaAemalle = APIUtil.TrainFromTo(asema1, asema2);
-            
+            List<Train> trainsFromTo = APIUtil.TrainFromTo(asema1, asema2);
+           
+            for (int i = 0; i < trainsFromTo.Count; i++)
+            {
+                if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
+
+                Console.WriteLine();
+                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber);
+                Console.WriteLine(trainsFromTo[i].timeTableRows[i].type);
+                Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
+
+            }
+
         }
 
         public void NextTrain()
