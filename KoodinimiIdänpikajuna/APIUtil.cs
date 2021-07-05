@@ -49,7 +49,9 @@ namespace KoodinimiIdänpikajuna
         public static string GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
             string json = "";
-            
+            string[] nameOneSplitted = shortNameOne.Split(" ");
+            string[] nameTwoSplitted = shortNameTwo.Split(" ");
+
 
             using (var client = new HttpClient(GetZipHandler()))
             {
