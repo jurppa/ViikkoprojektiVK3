@@ -9,13 +9,17 @@ namespace KoodinimiIdänpikajuna
             // testing Ari
             Console.WriteLine("Hello World!");
             var testi = APIUtil.TrainFromTo("TPE", "HKI");
-            foreach (var item in testi)
+            for(int i = 0; i < testi.Count; i++)
             {
-                Console.WriteLine(item.runningCurrently);
-                Console.WriteLine(item.trainNumber);
+                Console.WriteLine(testi[i].timeTableRows[i].type);
+                Console.WriteLine(testi[i].runningCurrently);
+                Console.WriteLine(testi[i].trainNumber);
+
             }
-            
-           
+
+
+
+
 
         }
         //testing testing Thien
