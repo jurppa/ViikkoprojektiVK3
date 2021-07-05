@@ -1,6 +1,6 @@
 ﻿using KoodinimiIdänpikajuna.Model;
 using Newtonsoft.Json;
-using RataDigiTraffic.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
