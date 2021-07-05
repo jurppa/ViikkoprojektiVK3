@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace KoodinimiIdänpikajuna.Model
 {
-    class Wagon
+    public class Wagon
     {
-        bool catering;
-        bool luggage;
-        bool pet;
-        bool playground;
-        bool smoking;
+        public bool catering;
+        public bool luggage;
+        public bool pet;
+        public bool playground;
+        public bool smoking;
     }
 }

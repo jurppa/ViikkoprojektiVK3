@@ -20,9 +20,9 @@ namespace KoodinimiIdänpikajuna
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
 
-
+            string[] statioNames = GetStationFullNames(fromStation, toStation);
             string json = "";
-            string url = $"{APIURL}/schedules?departure_station={fromStation}&arrival_station={toStation}";
+            string url = $"{APIURL}/schedules?departure_station={statioNames[0]}&arrival_station={statioNames[1]}";
 
             using (var client = new HttpClient(GetZipHandler()))
             {
