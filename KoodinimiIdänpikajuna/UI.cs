@@ -15,7 +15,8 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Seuraavaksi lähtevä juna");
             Console.WriteLine("3. Tietoa junan palveluista");
-            Console.WriteLine("4. Junan välipysäkit: ");
+            Console.WriteLine("4. Junan välipysäkit");
+            Console.WriteLine("5. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             int input = Int32.Parse(Console.ReadLine());
@@ -35,6 +36,9 @@ namespace KoodinimiIdänpikajuna
                 case 4:
                     ui.IntermediateStation();
                     break;
+                case 5:
+                    ui.LiveTrain();
+                    break;
                 default:
                     Console.WriteLine("Error 404");
                     break;
@@ -42,7 +46,7 @@ namespace KoodinimiIdänpikajuna
         }
         
         /// <summary>
-        /// FromTo() Metodissa kysytään lähtö, pääteasema, ja päivämäärä jonka jälkeen tulostetaan lista lähtevistä junista.
+        /// Tämä metodi kysytään lähtöaseman, pääteaseman, ja päivämäärän jonka jälkeen tulostetaan lista lähtevistä junista.
         /// </summary>
         
         public void FromTo()
@@ -60,9 +64,7 @@ namespace KoodinimiIdänpikajuna
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
-                Console.WriteLine(trainsFromTo[i].trainType + " | " + trainsFromTo[i].trainNumber);
-                Console.WriteLine(trainsFromTo[i].timeTableRows[i].type + " | ");
-                Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
+                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime);
                                 
             }
 
@@ -73,7 +75,7 @@ namespace KoodinimiIdänpikajuna
             var station1 = Console.ReadLine();
           
             DateTime date = DateTime.Now;
-            var train = APIUtil.NextDepartingTrain(station1);
+            //var train = APIUtil.NextDepartingTrain(station1);
             Console.WriteLine();
         }
         public void TrainInfo()
