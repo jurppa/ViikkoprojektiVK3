@@ -17,7 +17,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Tietoa junan palveluista");
-            Console.WriteLine("3. Junan välipysäkit");
+            Console.WriteLine("3. Aseman kautta kulkevat junat");
             Console.WriteLine("4. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
@@ -43,7 +43,7 @@ namespace KoodinimiIdänpikajuna
                         break;
                     case 3:
                         Console.WriteLine();
-                        ui.IntermediateStation();
+                        ui.GoingThroughTrains();
                         Console.Clear();
                         ui.StartMenu();
                         break;
@@ -102,9 +102,16 @@ namespace KoodinimiIdänpikajuna
             }
             Console.ReadKey();
         }
-        public void IntermediateStation()
+        public void GoingThroughTrains()
         {
-            
+            Console.WriteLine("Anna aseman nimi: ");
+            var station = Console.ReadLine();
+            var demTrains = APIUtil.GoingThrough(station);
+            for (int i = 0; i < demTrains.Count; i++)
+            {
+                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber);
+            }
+            Console.ReadKey();
         }
         //Junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
         //-Ari
