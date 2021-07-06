@@ -73,17 +73,11 @@ namespace KoodinimiIdänpikajuna
             }
 
 
-            string json = "";
             string[] nameOneSplitted = shortNameOne.Split(" ");
             string[] nameTwoSplitted = shortNameTwo.Split(" ");
+            string json = CreateClient(allStations);
 
-            using (var client = new HttpClient(GetZipHandler()))
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(allStations).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
-            }
+         
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
             var stationOne = res.First(x => x.stationName.Contains(nameOneSplitted[0]));
             var stationTwo = res.First(x => x.stationName.Contains(nameTwoSplitted[0]));
@@ -120,15 +114,12 @@ namespace KoodinimiIdänpikajuna
 
         public static List<Train> NextDepartingTrain(string stationName)
         {
-            string json = "";
+
+           
             string nextDepartureUrl = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?arrived_trains=5&arriving_trains=5";
-            using (var client = new HttpClient(GetZipHandler()))
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(nextDepartureUrl).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                        json = responseString;
-            }
+            string json = CreateClient(nextDepartureUrl);
+
+        
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
             DateTime now = DateTime.Now.ToLocalTime();
@@ -144,16 +135,10 @@ namespace KoodinimiIdänpikajuna
         public static Dictionary<string, bool> GetWagonInfo(DateTime date, int trainNumber)
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
-            string json = "";
             string url = @"https://rata.digitraffic.fi/api/v1/compositions/" + date.ToString("yyyy-MM-dd") + @"/" + trainNumber;
+            string json = CreateClient(url);
 
-            using (var client = new HttpClient(GetZipHandler()))
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(url).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
-            }
+            
             var res = JsonConvert.DeserializeObject<Train>(json);
             var serviceWagons = res.journeySections[0].wagons;
       
@@ -182,19 +167,13 @@ namespace KoodinimiIdänpikajuna
         public static Location TrackLiveTrainLocation(int trainNumber)
 
         {
-            string json = "";
             string url = @"https://rata.digitraffic.fi/api/v1/train-tracking/latest/" + trainNumber;
+            string json = CreateClient(url);
 
-            using (var client = new HttpClient(GetZipHandler()))
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(url).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
-            }
+            
             var res = JsonConvert.DeserializeObject<List<Location>>(json);
             var whereIsTrainAt = res.First();
-
+            Console.WriteLine(whereIsTrainAt.station);
                 return whereIsTrainAt;
             /// <summary>
             /// TracLiveTrainLocation palauttaa junan numerolla junan sijainnin.

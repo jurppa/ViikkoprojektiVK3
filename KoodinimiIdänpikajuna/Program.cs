@@ -9,14 +9,13 @@ namespace KoodinimiIdänpikajuna
           
             UI ui = new UI();
             // ui.startMenu();
-           // ui.LiveTrain();
+            // ui.LiveTrain();
 
-            
-            var testi = APIUtil.GoingThrough("PRI");
+
+            //var testi = APIUtil.GoingThrough("PRI");
             //ui.StartMenu();
-            var live = APIUtil.TrackLiveTrainLocation(150);
-            Console.WriteLine(live.station);
-            Console.WriteLine(live.nextStation);
+            APIUtil.TrackLiveTrainLocation(150);
+         
             //var testi = APIUtil.TrackLiveTrainLocation(150);
             //Console.WriteLine(testi.nextStation);
             //Console.WriteLine(testi.station);
