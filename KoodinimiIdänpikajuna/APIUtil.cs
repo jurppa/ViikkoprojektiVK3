@@ -39,6 +39,11 @@ namespace KoodinimiIdänpikajuna
 
             return res;
 
+            /// <summary>
+            ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
+            /// <summary>
+
+
 
 
         }
@@ -73,9 +78,12 @@ namespace KoodinimiIdänpikajuna
 
 
             return shortNames;
+            /// <summary>
+            /// GetStationFullName palauttaa kahden aseman(lähtö-määränpäät) nimet jos ei tiedä lyhennettä. Koodi ottaa huomioon, että jos asema on esimerkiksi Helsinki Tavara, niin sitä voi hakea pelkällä Helsinki:llä.
+            /// <summary>
 
         }
-       public static List<Train> GoingThrough(string stationName)
+        public static List<Train> GoingThrough(string stationName)
         {
             string json = "";
             string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/"+stationName + "?departing_trains=5";
@@ -90,7 +98,9 @@ namespace KoodinimiIdänpikajuna
             var nextTrainsGoingThrough = res.OrderByDescending(x =>x.timeTableRows[0].scheduledTime).Take(2).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
 
             return nextTrainsGoingThrough;
-
+            /// <summary>
+            /// GoingThroughissa haetaan jonkin tietyn aseman kautta kulkevat junat, palauttaa kaksi junaa.
+            /// <summary>
         }
 
 
@@ -112,6 +122,9 @@ namespace KoodinimiIdänpikajuna
             var nextDepartingTrain = res.Where(x => x.timeTableRows[0].scheduledTime > now);
 
             return res;
+            /// <summary>
+            /// NextDepartingtrain palauttaa seuraavan tulevan junan kun syöttää aseman nimen.
+            /// <summary>
         }
 
         public static Dictionary<string, bool> GetWagonInfo(string date, int trainNumber)
@@ -129,6 +142,7 @@ namespace KoodinimiIdänpikajuna
             }
             var res = JsonConvert.DeserializeObject<Train>(json);
             var serviceWagons = res.journeySections[0].wagons;
+      
 
 
 
@@ -149,6 +163,9 @@ namespace KoodinimiIdänpikajuna
 
 
             return servicesInWagons;
+            /// <summary>
+            /// servicesInWagons palauttaa käyttäjälle hänen hakuehtojen mukaisen junan jos käyttäjällä toiveissa esimerkiksi lemmikkivaunu.
+            /// <summary>
         }
 
         public static Location TrackLiveTrainLocation(int trainNumber)
