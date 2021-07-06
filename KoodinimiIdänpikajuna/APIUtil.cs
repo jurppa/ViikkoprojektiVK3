@@ -108,6 +108,43 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
+        public static Dictionary<string, bool> GetWagonInfo()
+        {
+            Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
+            string json = "";
+            string url = @"https://rata.digitraffic.fi/api/v1/compositions/2021-05-07/177";
+
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(url).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+            var res = JsonConvert.DeserializeObject<Train>(json);
+            var serviceWagons = res.journeySections[0].wagons;
+
+
+
+            foreach (var item in serviceWagons)
+            {
+                if (item.catering == true) { servicesInWagons["Catering"] = true; }
+                if (item.luggage == true) { servicesInWagons["luggage"] = true; }
+                if (item.playground == true) { servicesInWagons["Playground"] = true; }
+                if (item.smoking == true) { servicesInWagons["Smoking"] = true; }
+                if (item.pet == true) { servicesInWagons["Pet"] = true; }
+
+            }
+
+            foreach (var item in servicesInWagons)
+            {
+                Console.WriteLine(item.Key + " " + item.Value);
+            }
+
+
+            return servicesInWagons;
+        }
+
 
 
 

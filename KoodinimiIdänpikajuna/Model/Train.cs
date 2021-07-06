@@ -15,6 +15,7 @@ namespace KoodinimiIdänpikajuna.Model
         public bool runningCurrently; // true/false  Onko juna tällä hetkellä kulussa
         public bool cancelled; // true/false    Totta, jos junan peruminen on tehty 10 vuorokauden sisällä.Yli 10 vuorokautta sitten peruttuja junia ei palauteta rajapinnassa laisinkaan.
         public List<TimeTable> timeTableRows; //integer Kuvaa saapumisia ja lähtöjä liikennepaikoilta.Järjestetty reitin mukaiseen järjestykseen.
+        public List<JourneySection> journeySections;
 
     }
     public class TimeTable
@@ -40,6 +41,12 @@ namespace KoodinimiIdänpikajuna.Model
         public string categoryCode;
         public string detailedCategoryCodeId;
         public string detailedCategoryCode;
+
+    }
+
+    public class JourneySection
+    {
+        public List<Wagon> wagons;
 
     }
 }
