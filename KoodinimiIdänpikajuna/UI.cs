@@ -28,27 +28,35 @@ namespace KoodinimiIdänpikajuna
                 {
                     case 1:
                         ui.FromTo();
+                        Console.Clear();
+                        ui.StartMenu();
                         break;
                     case 2:
                         ui.TrainInfo();
+                        Console.Clear();
+                        ui.StartMenu();
                         break;
                     case 3:
                         ui.IntermediateStation();
+                        Console.Clear();
+                        ui.StartMenu();
                         break;
                     case 4:
                         ui.LiveTrain();
+                        Console.Clear();
+                        ui.StartMenu();
                         break;
                 }
-                if (input == "M")
-                {
-                    Console.Clear();
-                    ui.StartMenu();
-                }
-                else if(input.ToLower() == "lopeta")
-                {
+                //if (input == "M")
+                //{
+                //    Console.Clear();
+                //    ui.StartMenu();
+                //}
+                //else if(input.ToLower() == "lopeta")
+                //{
 
-                    break;
-                }
+                //    break;
+                //}
             }
         }
         
@@ -75,7 +83,6 @@ namespace KoodinimiIdänpikajuna
                                 
             }
             Console.ReadKey();
-            StartMenu();
         }
         public void NextTrain()
         {
@@ -100,7 +107,7 @@ namespace KoodinimiIdänpikajuna
             {
                 Console.WriteLine(item.Key);
             }
-
+            Console.ReadKey();
         }
         public void IntermediateStation()
         {
@@ -118,8 +125,8 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Juna on tällä hetkellä asemalla: " + live.station);
             Console.WriteLine("Seuraava asema: " + live.nextStation);
             Console.WriteLine("Edellinen asema: " + live.previousStation);
+            Console.ReadKey();
         }
-        
 
     }
 }
