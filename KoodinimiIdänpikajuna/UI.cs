@@ -106,6 +106,8 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna aseman nimi: ");
             var station = Console.ReadLine();
+            string[] stn = APIUtil.GetStationFullNames(station);
+            station = stn[0];
             var demTrains = APIUtil.GoingThrough(station);
             for (int i = 0; i < demTrains.Count; i++)
             {
