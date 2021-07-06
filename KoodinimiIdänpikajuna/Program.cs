@@ -7,14 +7,13 @@ namespace KoodinimiIdänpikajuna
         static void Main(string[] args)
         {
             UI ui = new UI();
-            ui.startMenu();
+            // ui.startMenu();
             var testi = APIUtil.GoingThrough("PRI");
 
-            foreach (var juna in testi)
-            {
-                Console.WriteLine(juna.trainNumber + " " + juna.timeTableRows[0].scheduledTime);
-            }
-
+            var testi = APIUtil.TrackLiveTrainLocation(150);
+            Console.WriteLine(testi.nextStation);
+            Console.WriteLine(testi.station);
+            Console.WriteLine(testi.previousStation);
         }
 
     

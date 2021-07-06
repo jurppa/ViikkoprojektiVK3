@@ -78,7 +78,7 @@ namespace KoodinimiIdänpikajuna
        public static List<Train> GoingThrough(string stationName)
         {
             string json = "";
-            string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/"+stationName;
+            string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/"+stationName + "?departing_trains=5";
             using (var client = new HttpClient(GetZipHandler()))
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -87,7 +87,7 @@ namespace KoodinimiIdänpikajuna
                 json = responseString;
             }
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            var nextTrainsGoingThrough = res.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).Take(1).ToList(); 
+            var nextTrainsGoingThrough = res.OrderByDescending(x =>x.timeTableRows[0].scheduledTime).Take(2).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
 
             return nextTrainsGoingThrough;
 
@@ -149,6 +149,25 @@ namespace KoodinimiIdänpikajuna
 
 
             return servicesInWagons;
+        }
+
+        public static Location TrackLiveTrainLocation(int trainNumber)
+
+        {
+            string json = "";
+            string url = @"https://rata.digitraffic.fi/api/v1/train-tracking/latest/" + trainNumber;
+
+            using (var client = new HttpClient(GetZipHandler()))
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(url).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+            var res = JsonConvert.DeserializeObject<List<Location>>(json);
+            var whereIsTrainAt = res.First();
+
+                return whereIsTrainAt;
         }
 
 
