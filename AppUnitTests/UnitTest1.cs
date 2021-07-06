@@ -26,8 +26,9 @@ namespace AppUnitTests
         public void TestMethod2()
         {
         APIUtil.TrainFromTo("Helsinki" , "Tampere");
-       
-            Assert.IsNotNull;
+         
+         Assert.IsNotNull("Testi menee läpi");
+         
 
 
 
