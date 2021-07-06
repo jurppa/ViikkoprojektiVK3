@@ -13,10 +13,9 @@ namespace KoodinimiIdänpikajuna
         public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
-            Console.WriteLine("2. Seuraavaksi lähtevä juna");
-            Console.WriteLine("3. Tietoa junan palveluista");
-            Console.WriteLine("4. Junan välipysäkit");
-            Console.WriteLine("5. Junan nykyinen sijainti");
+            Console.WriteLine("2. Tietoa junan palveluista");
+            Console.WriteLine("3. Junan välipysäkit");
+            Console.WriteLine("4. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             var input = Console.ReadLine();
@@ -31,15 +30,12 @@ namespace KoodinimiIdänpikajuna
                         ui.FromTo();
                         break;
                     case 2:
-                        ui.NextTrain();
-                        break;
-                    case 3:
                         ui.TrainInfo();
                         break;
-                    case 4:
+                    case 3:
                         ui.IntermediateStation();
                         break;
-                    case 5:
+                    case 4:
                         ui.LiveTrain();
                         break;
                 }
