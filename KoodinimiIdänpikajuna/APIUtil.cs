@@ -75,18 +75,24 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
 
         }
-        public static string[] IfGoingThrough(string GoingThrough)
+       public static List<Train> GoingThrough(string stationName)
         {
-            string[] GonnagoThrough = IfGoingThrough(GoingThrough);
             string json = "";
-            string url = $"{APIURL}/live-trains/station/{GoingThrough}";
-
-            using (var client = new HttpClient(GetZipHandler())
+            string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/"+stationName;
+            using (var client = new HttpClient(GetZipHandler()))
             {
-
-
-                //    return res;
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(goingThroughUrl).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
             }
+            var res = JsonConvert.DeserializeObject<List<Train>>(json);
+            var nextTrainsGoingThrough = res.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).Take(1).ToList(); 
+
+            return nextTrainsGoingThrough;
+
+        }
+
 
         public static List<Train> NextDepartingTrain(string stationName)
         {
