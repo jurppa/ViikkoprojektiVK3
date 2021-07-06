@@ -96,6 +96,14 @@ namespace KoodinimiIdänpikajuna
         {
             
         }
+        public void LiveTrain()
+        {
+            Console.WriteLine("Anna Junan numero: ");
+            int tnumber = Convert.ToInt32(Console.ReadLine());
+
+            var live = APIUtil.TrackLiveTrainLocation(tnumber);
+            Console.WriteLine(live);
+        }
         
 
     }

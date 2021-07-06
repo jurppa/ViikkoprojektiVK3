@@ -8,12 +8,15 @@ namespace KoodinimiIdänpikajuna
         {
             UI ui = new UI();
             // ui.startMenu();
+           // ui.LiveTrain();
+
+            
             var testi = APIUtil.GoingThrough("PRI");
 
-            var testi = APIUtil.TrackLiveTrainLocation(150);
-            Console.WriteLine(testi.nextStation);
-            Console.WriteLine(testi.station);
-            Console.WriteLine(testi.previousStation);
+            //var testi = APIUtil.TrackLiveTrainLocation(150);
+            //Console.WriteLine(testi.nextStation);
+            //Console.WriteLine(testi.station);
+            //Console.WriteLine(testi.previousStation);
         }
 
     
