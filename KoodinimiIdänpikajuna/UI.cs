@@ -102,6 +102,10 @@ namespace KoodinimiIdänpikajuna
             }
             Console.ReadKey();
         }
+        /// <summary>
+        /// Metodi katsoo aseman läpi 5 seuraavaa menevää junaa ja niiden pääteasemat.
+        /// -Thien
+        /// </summary>
         public void GoingThroughTrains()
         {
             Console.WriteLine("Anna aseman nimi: ");
