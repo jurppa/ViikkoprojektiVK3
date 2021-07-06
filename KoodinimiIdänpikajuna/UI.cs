@@ -9,7 +9,10 @@ namespace KoodinimiIdänpikajuna
 {
     class UI
     {
-
+        /// <summary>
+        /// StartMenu valikosta kaikki lähtee liikkeelle ja täällä käyttäjä voi valita mitä haluaa tehdä. 
+        /// -Thien
+        /// </summary>
         public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
@@ -27,41 +30,36 @@ namespace KoodinimiIdänpikajuna
                 switch (inputToInt)
                 {
                     case 1:
+                        Console.WriteLine();
                         ui.FromTo();
                         Console.Clear();
                         ui.StartMenu();
                         break;
                     case 2:
+                        Console.WriteLine();
                         ui.TrainInfo();
                         Console.Clear();
                         ui.StartMenu();
                         break;
                     case 3:
+                        Console.WriteLine();
                         ui.IntermediateStation();
                         Console.Clear();
                         ui.StartMenu();
                         break;
                     case 4:
+                        Console.WriteLine();
                         ui.LiveTrain();
                         Console.Clear();
                         ui.StartMenu();
                         break;
                 }
-                //if (input == "M")
-                //{
-                //    Console.Clear();
-                //    ui.StartMenu();
-                //}
-                //else if(input.ToLower() == "lopeta")
-                //{
-
-                //    break;
-                //}
             }
         }
         
         /// <summary>
         /// Tämä metodi kysytään lähtöaseman, pääteaseman, ja päivämäärän jonka jälkeen tulostetaan lista lähtevistä junista.
+        /// -Thien & Ari
         /// </summary>
         
         public void FromTo()
@@ -84,15 +82,10 @@ namespace KoodinimiIdänpikajuna
             }
             Console.ReadKey();
         }
-        public void NextTrain()
-        {
-            Console.WriteLine("Lähtöasema: ");
-            var station1 = Console.ReadLine();
-          
-            DateTime date = DateTime.Now;
-            //var train = APIUtil.NextDepartingTrain(station1);
-            Console.WriteLine();
-        }
+        /// <summary>
+        /// Tämä metodi kertoo käyttäjälle junan palvelut junan numeron perusteella.
+        /// -Thien
+        /// </summary>
         public void TrainInfo()
         {
             Console.WriteLine("Anna junan numero: ");
@@ -113,9 +106,10 @@ namespace KoodinimiIdänpikajuna
         {
             
         }
+        //Junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
+        //-Ari
         public void LiveTrain()
-        {   // junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
-
+        {   
             Console.WriteLine("Anna Junan numero: ");
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
@@ -127,6 +121,5 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Edellinen asema: " + live.previousStation);
             Console.ReadKey();
         }
-
     }
 }
