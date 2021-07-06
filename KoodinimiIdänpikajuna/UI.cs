@@ -81,14 +81,14 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Anna junan numero: ");
             var trainNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Lähtöpäivämäärä: ");
-            var date = Console.ReadLine();
+            var date = Convert.ToDateTime( Console.ReadLine());
             var wagon = APIUtil.GetWagonInfo(date, trainNumber);
-
+            Console.WriteLine();
             Console.WriteLine("Vaunun sisältämät palvelut: ");
             Console.WriteLine();
             foreach (KeyValuePair<string, bool>item in wagon)
             {
-                Console.WriteLine(item.Key + " " + item.Value);
+                Console.WriteLine(item.Key);
             }
 
         }
