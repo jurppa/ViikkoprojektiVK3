@@ -63,7 +63,7 @@ namespace KoodinimiIdänpikajuna
             };
         }
 
-        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
+        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo = "Helsinki")
         {
             if (shortNameOne.Length < 2 || shortNameTwo.Length < 2)
 
@@ -98,7 +98,7 @@ namespace KoodinimiIdänpikajuna
 
             
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            var nextTrainsGoingThrough = res.OrderByDescending(x => x.timeTableRows[0].scheduledTime).Take(2).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
+            var nextTrainsGoingThrough = res.OrderByDescending(x => x.timeTableRows[0].scheduledTime).Take(5).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
 
             return nextTrainsGoingThrough;
             /// <summary>
@@ -117,9 +117,6 @@ namespace KoodinimiIdänpikajuna
             var res = JsonConvert.DeserializeObject<Train>(json);
             var serviceWagons = res.journeySections[0].wagons;
 
-
-
-
             foreach (var item in serviceWagons)
             {
                 if (item.catering == true) { servicesInWagons["Catering"] = true; }
@@ -129,10 +126,6 @@ namespace KoodinimiIdänpikajuna
                 if (item.pet == true) { servicesInWagons["Lemmikkipaikka"] = true; }
 
             }
-
-
-
-
             return servicesInWagons;
             /// <summary>
             /// servicesInWagons palauttaa käyttäjälle hänen hakuehtojen mukaisen junan jos käyttäjällä toiveissa esimerkiksi lemmikkivaunu.
