@@ -19,7 +19,7 @@ namespace KoodinimiIdänpikajuna
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             var input = Console.ReadLine();
-            int inputToInt = Int32.Parse(Console.ReadLine());
+            int inputToInt = Int32.Parse(input);
             UI ui = new UI();
 
             while(input != null)
