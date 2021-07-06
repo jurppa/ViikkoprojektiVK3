@@ -18,7 +18,10 @@ namespace AppUnitTests
 
          Assert.AreEqual(expected[0], actual[0]);
          Assert.AreEqual(expected[1], actual[1]);
-    
+            ///<summary>
+            ///Tarkistaa, toimiiko asemien koko nimen hakemisen.
+            /// </summary>
+
 
 
         }
@@ -28,6 +31,9 @@ namespace AppUnitTests
         APIUtil.TrainFromTo("Helsinki" , "Tampere");
          
          Assert.IsNotNull("Testi menee läpi");
+            ///<Summary>
+            ///Tarkistaa, ettei lista ole tyhjä(eli kulkeeko välillä junia)
+            ///</summary>
          
 
 
@@ -54,6 +60,9 @@ namespace AppUnitTests
          
             
             Assert.AreEqual(servicesInWagons["Lemmikkipaikka"], actualServicesInWagons["Lemmikkipaikka"]);
+            ///<summary>
+            ///Tarkistaa, toimiiko vaunuinfon hakeminen.
+            /// </summary>
 
 
 
