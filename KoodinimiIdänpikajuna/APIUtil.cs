@@ -18,16 +18,9 @@ namespace KoodinimiIdänpikajuna
         private const string WAGONURL = "https://rata.digitraffic.fi/api/v1/compositions/";
         private const string GOINGTHROUGHURL = "https://rata.digitraffic.fi/api/v1/live-trains/station";
 
-        public static List<Train> TrainFromTo(string fromStation, string toStation)
+        public static string CreateClient(string url)
         {
-            string[] stationNames = new string[2];
-            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
-            else { 
-            stationNames = GetStationFullNames(fromStation, toStation);
-            }
             string json = "";
-            string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
-
             using (var client = new HttpClient(GetZipHandler()))
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -35,6 +28,22 @@ namespace KoodinimiIdänpikajuna
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
+
+            return json;
+        }
+
+        public static List<Train> TrainFromTo(string fromStation, string toStation)
+        {
+            string[] stationNames = new string[2];
+            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
+            else { 
+            stationNames = GetStationFullNames(fromStation, toStation);
+            }
+            
+            string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
+            string json = CreateClient(url);
+
+           
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
 
             return res;
@@ -59,12 +68,13 @@ namespace KoodinimiIdänpikajuna
         public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
             if (shortNameOne.Length < 2 || shortNameTwo.Length < 2) 
+
             { Console.WriteLine("Tarkista asemien nimet.");
                 return new string[0];
             }
 
 
-                string json = "";
+            string json = "";
             string[] nameOneSplitted = shortNameOne.Split(" ");
             string[] nameTwoSplitted = shortNameTwo.Split(" ");
 
