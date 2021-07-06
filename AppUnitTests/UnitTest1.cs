@@ -29,6 +29,14 @@ namespace AppUnitTests
         
 
         }
+
+        [TestMethod]
+        public void WagonInfoShouldReturnTrue()
+        {
+            Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
+            Dictionary<string, bool> actualServicesInWagons = APIUtil.GetWagonInfo(DateTime.Now.Date, 150);
+            
+        }
     }
 
 }

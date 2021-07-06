@@ -161,6 +161,30 @@ namespace KoodinimiIdänpikajuna
         }
 
 
+        public static string ShortNameToFullName(string shortNameOne)
+        {
+            if (shortNameOne.Length < 2)
+
+            {
+                Console.WriteLine("Tarkista asemien nimet.");
+                return "";
+            }
+
+            string json = CreateClient(allStations);
+
+
+            var res = JsonConvert.DeserializeObject<List<Station>>(json);
+            var stationOne = res.First(x => x.stationName.Contains(shortNameOne));
+          
+
+            string fullNames = stationOne.stationName;
+
+
+            return fullNames;
+
+        }
+
+
 
 
 
