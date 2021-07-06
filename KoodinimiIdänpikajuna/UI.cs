@@ -13,10 +13,9 @@ namespace KoodinimiIdänpikajuna
         public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
-            Console.WriteLine("2. Seuraavaksi lähtevä juna");
-            Console.WriteLine("3. Tietoa junan palveluista");
-            Console.WriteLine("4. Junan välipysäkit");
-            Console.WriteLine("5. Junan nykyinen sijainti");
+            Console.WriteLine("2. Tietoa junan palveluista");
+            Console.WriteLine("3. Junan välipysäkit");
+            Console.WriteLine("4. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             int input = Int32.Parse(Console.ReadLine());
@@ -24,24 +23,21 @@ namespace KoodinimiIdänpikajuna
 
             switch (input)
             {
-                case 1:
-                    ui.FromTo();
-                    break;
-                case 2:
-                    ui.NextTrain();
-                    break;
-                case 3:
-                    ui.TrainInfo();
-                    break;
-                case 4:
-                    ui.IntermediateStation();
-                    break;
-                case 5:
-                    ui.LiveTrain();
-                    break;
-                default:
-                    Console.WriteLine("Error 404");
-                    break;
+                switch (inputToInt)
+                {
+                    case 1:
+                        ui.FromTo();
+                        break;
+                    case 2:
+                        ui.TrainInfo();
+                        break;
+                    case 3:
+                        ui.IntermediateStation();
+                        break;
+                    case 4:
+                        ui.LiveTrain();
+                        break;
+                }
             }
         }
         
@@ -104,7 +100,11 @@ namespace KoodinimiIdänpikajuna
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
-            Console.WriteLine(live.station);
+            Console.WriteLine(live.timestamp);
+
+            Console.WriteLine("Olet asemalla: " + live.station);
+            Console.WriteLine("Seuraava asema: " + live.nextStation);
+            Console.WriteLine("Edellinen asema: " + live.previousStation);
         }
         
 
