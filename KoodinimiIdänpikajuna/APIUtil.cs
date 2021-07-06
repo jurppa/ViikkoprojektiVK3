@@ -63,7 +63,7 @@ namespace KoodinimiIdänpikajuna
             };
         }
 
-        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
+        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo = "Helsinki")
         {
             if (shortNameOne.Length < 2 || shortNameTwo.Length < 2)
 
