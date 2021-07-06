@@ -9,10 +9,6 @@ namespace KoodinimiIdänpikajuna
 {
     class UI
     {
-        
-        /// <summary>
-        /// FromTo() Metodissa kysytään lähtö, pääteasema, ja päivämäärä jonka jälkeen tulostetaan lista lähtevistä junista.
-        /// </summary>
 
         public void startMenu()
         {
@@ -44,6 +40,11 @@ namespace KoodinimiIdänpikajuna
                     break;
             }
         }
+        
+        /// <summary>
+        /// FromTo() Metodissa kysytään lähtö, pääteasema, ja päivämäärä jonka jälkeen tulostetaan lista lähtevistä junista.
+        /// </summary>
+        
         public void FromTo()
         {
             Console.WriteLine("Lähtöasema: ");
