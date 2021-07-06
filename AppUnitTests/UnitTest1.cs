@@ -1,5 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KoodinimiIdänpikajuna;
+using System;
+using System.IO;
+using System.Collections.Generic;
 namespace AppUnitTests
 {
     [TestClass]
@@ -22,12 +25,8 @@ namespace AppUnitTests
         [TestMethod]
         public void TestMethod2()
         {
-          
-
-
-
-
-
+        APIUtil.TrainFromTo("Helsinki" , "Tampere");
+        
 
         }
     }
