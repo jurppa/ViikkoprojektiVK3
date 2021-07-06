@@ -59,7 +59,7 @@ namespace AppUnitTests
             /// </summary>
 
 
-
+            //Lis‰‰ testi shortname to fullname
 
 
 
