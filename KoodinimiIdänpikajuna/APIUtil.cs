@@ -114,11 +114,11 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
-        public static Dictionary<string, bool> GetWagonInfo(string date, int trainNumber)
+        public static Dictionary<string, bool> GetWagonInfo(DateTime date, int trainNumber)
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
             string json = "";
-            string url = @"https://rata.digitraffic.fi/api/v1/compositions/@" + date + @"/" + trainNumber;
+            string url = @"https://rata.digitraffic.fi/api/v1/compositions/" + date.ToString("yyyy-MM-dd") + @"/" + trainNumber;
 
             using (var client = new HttpClient(GetZipHandler()))
             {
@@ -142,10 +142,7 @@ namespace KoodinimiIdänpikajuna
 
             }
 
-            foreach (var item in servicesInWagons)
-            {
-                Console.WriteLine(item.Key + " " + item.Value);
-            }
+            
 
 
             return servicesInWagons;
@@ -169,7 +166,7 @@ namespace KoodinimiIdänpikajuna
 
                 return whereIsTrainAt;
         }
-
+       
 
 
 
