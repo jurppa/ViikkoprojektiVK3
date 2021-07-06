@@ -48,7 +48,7 @@ namespace KoodinimiIdänpikajuna
 
             /// <summary>
             ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
-            /// <summary>
+            /// </summary>
 
 
 
@@ -88,7 +88,7 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
             /// <summary>
             /// GetStationFullName palauttaa kahden aseman(lähtö-määränpäät) nimet jos ei tiedä lyhennettä. Koodi ottaa huomioon, että jos asema on esimerkiksi Helsinki Tavara, niin sitä voi hakea pelkällä Helsinki:llä.
-            /// <summary>
+            /// </summary>
 
         }
         public static List<Train> GoingThrough(string stationName)
@@ -103,7 +103,7 @@ namespace KoodinimiIdänpikajuna
             return nextTrainsGoingThrough;
             /// <summary>
             /// GoingThroughissa haetaan jonkin tietyn aseman kautta kulkevat junat, palauttaa kaksi junaa.
-            /// <summary>
+            /// </summary>
         }
 
 
@@ -129,7 +129,7 @@ namespace KoodinimiIdänpikajuna
             return servicesInWagons;
             /// <summary>
             /// servicesInWagons palauttaa käyttäjälle hänen hakuehtojen mukaisen junan jos käyttäjällä toiveissa esimerkiksi lemmikkivaunu.
-            /// <summary>
+            /// </summary>
         }
 
         public static Location TrackLiveTrainLocation(int trainNumber)
@@ -145,7 +145,7 @@ namespace KoodinimiIdänpikajuna
             return whereIsTrainAt;
             /// <summary>
             /// TracLiveTrainLocation palauttaa junan numerolla junan sijainnin.
-            /// <summary>
+            /// </summary>
         }
 
 
