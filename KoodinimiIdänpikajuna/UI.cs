@@ -111,7 +111,7 @@ namespace KoodinimiIdänpikajuna
             var demTrains = APIUtil.GoingThrough(station);
             for (int i = 0; i < demTrains.Count; i++)
             {
-                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " | " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
+                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
             }
             Console.ReadKey();
         }
