@@ -162,7 +162,7 @@ namespace KoodinimiIdänpikajuna
 
 
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName.Contains(shortNameOne));
+            var stationOne = res.First(x => x.stationShortCode.Contains(shortNameOne));
           
 
             string fullNames = stationOne.stationName;
