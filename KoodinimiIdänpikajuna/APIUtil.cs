@@ -108,7 +108,7 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
-        public static Dictionary<string, bool> GetWagonInfo(string date, string trainNumber)
+        public static Dictionary<string, bool> GetWagonInfo(string date, int trainNumber)
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
             string json = "";
