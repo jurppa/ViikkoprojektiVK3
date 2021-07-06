@@ -39,7 +39,6 @@ namespace KoodinimiIdänpikajuna
             else { 
             stationNames = GetStationFullNames(fromStation, toStation);
             }
-            
             string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
             string json = CreateClient(url);
 
