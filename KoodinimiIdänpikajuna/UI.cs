@@ -18,10 +18,11 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("4. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
-            int input = Int32.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+            int inputToInt = Int32.Parse(Console.ReadLine());
             UI ui = new UI();
 
-            switch (input)
+            while(input != null)
             {
                 switch (inputToInt)
                 {
@@ -37,6 +38,16 @@ namespace KoodinimiIdänpikajuna
                     case 4:
                         ui.LiveTrain();
                         break;
+                }
+                if (input == "M")
+                {
+                    Console.Clear();
+                    ui.StartMenu();
+                }
+                else if(input.ToLower() == "lopeta")
+                {
+
+                    break;
                 }
             }
         }
