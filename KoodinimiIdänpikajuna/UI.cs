@@ -19,29 +19,30 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("5. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
-            int input = Int32.Parse(Console.ReadLine());
+            var input = Console.ReadLine();
+            int inputToInt = Int32.Parse(input);
             UI ui = new UI();
 
-            switch (input)
+            while (input != null)
             {
-                case 1:
-                    ui.FromTo();
-                    break;
-                case 2:
-                    ui.NextTrain();
-                    break;
-                case 3:
-                    ui.TrainInfo();
-                    break;
-                case 4:
-                    ui.IntermediateStation();
-                    break;
-                case 5:
-                    ui.LiveTrain();
-                    break;
-                default:
-                    Console.WriteLine("Error 404");
-                    break;
+                switch (inputToInt)
+                {
+                    case 1:
+                        ui.FromTo();
+                        break;
+                    case 2:
+                        ui.NextTrain();
+                        break;
+                    case 3:
+                        ui.TrainInfo();
+                        break;
+                    case 4:
+                        ui.IntermediateStation();
+                        break;
+                    case 5:
+                        ui.LiveTrain();
+                        break;
+                }
             }
         }
         
