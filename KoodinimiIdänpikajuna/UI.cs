@@ -74,7 +74,8 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
                                 
             }
-
+            Console.ReadKey();
+            StartMenu();
         }
         public void NextTrain()
         {
