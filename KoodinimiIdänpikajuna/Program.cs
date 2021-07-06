@@ -7,8 +7,9 @@ namespace KoodinimiIdänpikajuna
         static void Main(string[] args)
         {
             UI ui = new UI();
-            // ui.startMenu();
-            var testi = APIUtil.GoingThrough("PRI");
+            ui.startMenu();
+
+            var testi = APIUtil.GoingThrough("TPE");
 
             foreach (var juna in testi)
             {
