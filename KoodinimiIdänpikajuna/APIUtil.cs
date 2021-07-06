@@ -108,11 +108,11 @@ namespace KoodinimiIdänpikajuna
             return res;
         }
 
-        public static Dictionary<string, bool> GetWagonInfo()
+        public static Dictionary<string, bool> GetWagonInfo(string date, string trainNumber)
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
             string json = "";
-            string url = @"https://rata.digitraffic.fi/api/v1/compositions/2021-05-07/177";
+            string url = @"https://rata.digitraffic.fi/api/v1/compositions/@" + date + @"/" + trainNumber;
 
             using (var client = new HttpClient(GetZipHandler()))
             {
