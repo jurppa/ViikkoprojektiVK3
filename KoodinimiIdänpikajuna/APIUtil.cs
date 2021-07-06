@@ -75,18 +75,18 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
 
         }
-        //public static string[] IfGoingThrough(string GoingThrough)
-        //{
-        //    string[] GonnagoThrough = IfGoingThrough(GoingThrough);
-        //    string json = "";
-        //    string url = $"{APIURL}/live-trains/station/{GoingThrough}";
+        public static string[] IfGoingThrough(string GoingThrough)
+        {
+            string[] GonnagoThrough = IfGoingThrough(GoingThrough);
+            string json = "";
+            string url = $"{APIURL}/live-trains/station/{GoingThrough}";
 
-        //    using (var client = new HttpClient(GetZipHandler())
-        //    {
+            using (var client = new HttpClient(GetZipHandler())
+            {
 
 
-        ////    return res;
-        //}
+                //    return res;
+            }
 
         public static List<Train> NextDepartingTrain(string stationName)
         {
@@ -97,7 +97,7 @@ namespace KoodinimiIdänpikajuna
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var response = client.GetAsync(nextDepartureUrl).Result;
                 var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
+                        json = responseString;
             }
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
@@ -129,7 +129,7 @@ namespace KoodinimiIdänpikajuna
             foreach (var item in serviceWagons)
             {
                 if (item.catering == true) { servicesInWagons["Catering"] = true; }
-                if (item.luggage == true) { servicesInWagons["luggage"] = true; }
+                if (item.luggage == true) { servicesInWagons["Luggage"] = true; }
                 if (item.playground == true) { servicesInWagons["Playground"] = true; }
                 if (item.smoking == true) { servicesInWagons["Smoking"] = true; }
                 if (item.pet == true) { servicesInWagons["Pet"] = true; }
