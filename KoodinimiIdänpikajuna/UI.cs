@@ -102,7 +102,11 @@ namespace KoodinimiIdänpikajuna
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
-            Console.WriteLine(live.station);
+            Console.WriteLine(live.timestamp);
+
+            Console.WriteLine("Olet asemalla: " + live.station);
+            Console.WriteLine("Seuraava asema: " + live.nextStation);
+            Console.WriteLine("Edellinen asema: " + live.previousStation);
         }
         
 
