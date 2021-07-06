@@ -99,14 +99,15 @@ namespace KoodinimiIdänpikajuna
             
         }
         public void LiveTrain()
-        {
+        {   // junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
+
             Console.WriteLine("Anna Junan numero: ");
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
-            Console.WriteLine(live.timestamp);
-
-            Console.WriteLine("Olet asemalla: " + live.station);
+          
+            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp);
+            Console.WriteLine("Juna on tällä hetkellä asemalla: " + live.station);
             Console.WriteLine("Seuraava asema: " + live.nextStation);
             Console.WriteLine("Edellinen asema: " + live.previousStation);
         }
