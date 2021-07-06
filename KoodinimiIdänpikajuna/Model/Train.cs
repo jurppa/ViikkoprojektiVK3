@@ -49,4 +49,12 @@ namespace KoodinimiIdänpikajuna.Model
         public List<Wagon> wagons;
 
     }
+    public class Wagon
+    {
+        public bool catering;
+        public bool luggage;
+        public bool pet;
+        public bool playground;
+        public bool smoking;
+    }
 }
