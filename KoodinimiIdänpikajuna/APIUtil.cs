@@ -75,18 +75,18 @@ namespace KoodinimiIdänpikajuna
             return shortNames;
 
         }
-        public static string[] IfGoingThrough(string GoingThrough)
-        {
-            string[] GonnagoThrough = IfGoingThrough(GoingThrough);
-            string json = "";
-            string url = $"{APIURL}/live-trains/station/{GoingThrough}";
+        //public static string[] IfGoingThrough(string GoingThrough)
+        //{
+        //    string[] GonnagoThrough = IfGoingThrough(GoingThrough);
+        //    string json = "";
+        //    string url = $"{APIURL}/live-trains/station/{GoingThrough}";
 
-            using (var client = new HttpClient(GetZipHandler())
-            {
+        //    using (var client = new HttpClient(GetZipHandler())
+        //    {
 
 
-            return res;
-        }
+        ////    return res;
+        //}
 
         public static List<Train> NextDepartingTrain(string stationName)
         {
