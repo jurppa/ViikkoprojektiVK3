@@ -9,7 +9,7 @@ namespace KoodinimiIdänpikajuna
           
             UI ui = new UI();
             // ui.startMenu();
-           // ui.LiveTrain();
+            ui.LiveTrain();
 
             
             var testi = APIUtil.GoingThrough("PRI");
