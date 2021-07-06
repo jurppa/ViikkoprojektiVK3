@@ -24,8 +24,13 @@ namespace AppUnitTests
         [TestMethod]
         public void TestMethod2()
         {
-            APIUtil.TrainFromTo("Helsinki", "Tampere");
-           
+        APIUtil.TrainFromTo("Helsinki" , "Tampere");
+       
+            Assert.IsNotNull;
+
+
+
+        
 
         }
 
