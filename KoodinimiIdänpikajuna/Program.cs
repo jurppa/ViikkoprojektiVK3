@@ -8,8 +8,8 @@ namespace KoodinimiIdänpikajuna
         {
           
             UI ui = new UI();
-            ui.StartMenu();
-            // ui.LiveTrain();
+            //ui.StartMenu();
+             ui.LiveTrain();
 
 
             //var testi = APIUtil.GoingThrough("PRI");
