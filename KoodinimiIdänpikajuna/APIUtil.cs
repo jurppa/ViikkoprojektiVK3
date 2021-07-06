@@ -93,15 +93,10 @@ namespace KoodinimiIdänpikajuna
         }
         public static List<Train> GoingThrough(string stationName)
         {
-            string json = "";
             string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?departing_trains=5";
-            using (var client = new HttpClient(GetZipHandler()))
-            {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync(goingThroughUrl).Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
-            }
+            string json = CreateClient(goingThroughUrl);
+
+            
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
             var nextTrainsGoingThrough = res.OrderByDescending(x => x.timeTableRows[0].scheduledTime).Take(2).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
 
