@@ -149,10 +149,10 @@ namespace KoodinimiIdänpikajuna
             foreach (var item in serviceWagons)
             {
                 if (item.catering == true) { servicesInWagons["Catering"] = true; }
-                if (item.luggage == true) { servicesInWagons["Luggage"] = true; }
-                if (item.playground == true) { servicesInWagons["Playground"] = true; }
-                if (item.smoking == true) { servicesInWagons["Smoking"] = true; }
-                if (item.pet == true) { servicesInWagons["Pet"] = true; }
+                if (item.luggage == true) { servicesInWagons["Matkatavarat"] = true; }
+                if (item.playground == true) { servicesInWagons["Lasten leikkialue"] = true; }
+                if (item.smoking == true) { servicesInWagons["Tupakointi"] = true; }
+                if (item.pet == true) { servicesInWagons["Lemmikkipaikka"] = true; }
 
             }
 
