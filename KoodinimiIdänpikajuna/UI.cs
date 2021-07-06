@@ -10,7 +10,7 @@ namespace KoodinimiIdänpikajuna
     class UI
     {
 
-        public void startMenu()
+        public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Seuraavaksi lähtevä juna");
@@ -102,7 +102,7 @@ namespace KoodinimiIdänpikajuna
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
-            Console.WriteLine(live);
+            Console.WriteLine(live.station);
         }
         
 
