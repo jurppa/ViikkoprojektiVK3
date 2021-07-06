@@ -26,6 +26,11 @@ namespace AppUnitTests
         public void TestMethod2()
         {
         APIUtil.TrainFromTo("Helsinki" , "Tampere");
+       
+            Assert.IsNotNull;
+
+
+
         
 
         }
@@ -35,6 +40,7 @@ namespace AppUnitTests
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
             Dictionary<string, bool> actualServicesInWagons = APIUtil.GetWagonInfo(DateTime.Now.Date, 150);
+
             
         }
     }
