@@ -58,10 +58,15 @@ namespace KoodinimiIdänpikajuna
 
         public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo)
         {
-            string json = "";
+            if (shortNameOne.Length < 2 || shortNameTwo.Length < 2) 
+            { Console.WriteLine("Tarkista asemien nimet.");
+                return new string[0];
+            }
+
+
+                string json = "";
             string[] nameOneSplitted = shortNameOne.Split(" ");
             string[] nameTwoSplitted = shortNameTwo.Split(" ");
-
 
             using (var client = new HttpClient(GetZipHandler()))
             {

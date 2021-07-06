@@ -13,7 +13,7 @@ namespace KoodinimiIdänpikajuna
 
             
             var testi = APIUtil.GoingThrough("PRI");
-
+            ui.StartMenu();
             //var testi = APIUtil.TrackLiveTrainLocation(150);
             //Console.WriteLine(testi.nextStation);
             //Console.WriteLine(testi.station);

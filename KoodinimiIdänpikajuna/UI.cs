@@ -10,7 +10,7 @@ namespace KoodinimiIdänpikajuna
     class UI
     {
 
-        public void startMenu()
+        public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Seuraavaksi lähtevä juna");
