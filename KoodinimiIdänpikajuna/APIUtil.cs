@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace KoodinimiIdänpikajuna
 {
-    class APIUtil
+    public class APIUtil
     {
         private const string APIURL = "https://rata.digitraffic.fi/api/v1";
         private const string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";

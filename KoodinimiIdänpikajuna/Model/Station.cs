@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KoodinimiIdänpikajuna.Model
 {
-    class Station
+    public class Station
     {
         public bool passengerTraffic;//    passengerTraffic: boolean Onko liikennepaikalla kaupallista matkustajaliikennettä
         public string countryCode;//countryCode: string Liikennepaikan maatunnus

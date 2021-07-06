@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KoodinimiIdänpikajuna.Model
 {
-    class Train
+    public class Train
     {
         public int trainNumber; //; // 1-99999  Junan numero.Esim junan "IC 59" junanumero on 59
         public string trainType; // IC, P, S, ...

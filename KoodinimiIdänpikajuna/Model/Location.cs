@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KoodinimiIdänpikajuna.Model
 {
-    class Location
+    public class Location
     {
         public DateTime timestamp;
         public string station;

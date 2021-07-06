@@ -6,6 +6,7 @@ namespace KoodinimiIdänpikajuna
     {
         static void Main(string[] args)
         {
+          
             UI ui = new UI();
             // ui.startMenu();
            // ui.LiveTrain();
