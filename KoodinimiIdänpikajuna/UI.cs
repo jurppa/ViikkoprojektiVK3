@@ -13,10 +13,9 @@ namespace KoodinimiIdänpikajuna
         public void StartMenu()
         {
             Console.WriteLine("1. Juna aikataulut");
-            Console.WriteLine("2. Seuraavaksi lähtevä juna");
-            Console.WriteLine("3. Tietoa junan palveluista");
-            Console.WriteLine("4. Junan välipysäkit");
-            Console.WriteLine("5. Junan nykyinen sijainti");
+            Console.WriteLine("2. Tietoa junan palveluista");
+            Console.WriteLine("3. Junan välipysäkit");
+            Console.WriteLine("4. Junan nykyinen sijainti");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             int input = Int32.Parse(Console.ReadLine());
@@ -24,24 +23,21 @@ namespace KoodinimiIdänpikajuna
 
             switch (input)
             {
-                case 1:
-                    ui.FromTo();
-                    break;
-                case 2:
-                    ui.NextTrain();
-                    break;
-                case 3:
-                    ui.TrainInfo();
-                    break;
-                case 4:
-                    ui.IntermediateStation();
-                    break;
-                case 5:
-                    ui.LiveTrain();
-                    break;
-                default:
-                    Console.WriteLine("Error 404");
-                    break;
+                switch (inputToInt)
+                {
+                    case 1:
+                        ui.FromTo();
+                        break;
+                    case 2:
+                        ui.TrainInfo();
+                        break;
+                    case 3:
+                        ui.IntermediateStation();
+                        break;
+                    case 4:
+                        ui.LiveTrain();
+                        break;
+                }
             }
         }
         
@@ -64,7 +60,7 @@ namespace KoodinimiIdänpikajuna
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
-                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime);
+                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
                                 
             }
 
