@@ -9,13 +9,8 @@ namespace KoodinimiIdänpikajuna
             UI ui = new UI();
             ui.startMenu();
            
-            ui.TrainInfo();
-           
-
         }
 
     
     }
-        //testing testing Thien
-    
 }
