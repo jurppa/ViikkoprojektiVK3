@@ -34,8 +34,26 @@ namespace AppUnitTests
         public void WagonInfoShouldReturnTrue()
         {
             Dictionary<string, bool> servicesInWagons = new Dictionary<string, bool>();
+            servicesInWagons.Add("Catering", true);
+            servicesInWagons.Add("Lasten leikkialue", true);
+       
+            servicesInWagons.Add("Tupakointi", false);
+            servicesInWagons.Add("Lemmikkipaikka", true);
+
+
             Dictionary<string, bool> actualServicesInWagons = APIUtil.GetWagonInfo(DateTime.Now.Date, 150);
+
+            Assert.AreEqual(servicesInWagons["Catering"], actualServicesInWagons["Catering"]);
+            Assert.AreEqual(servicesInWagons["Lasten leikkialue"], actualServicesInWagons["Lasten leikkialue"]);
+         
             
+            Assert.AreEqual(servicesInWagons["Lemmikkipaikka"], actualServicesInWagons["Lemmikkipaikka"]);
+
+
+
+
+
+
         }
     }
 
