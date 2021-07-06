@@ -60,8 +60,8 @@ namespace KoodinimiIdänpikajuna
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
-                Console.WriteLine(trainsFromTo[i].trainType + "|" + trainsFromTo[i].trainNumber);
-                Console.WriteLine(trainsFromTo[i].timeTableRows[i].type);
+                Console.WriteLine(trainsFromTo[i].trainType + " | " + trainsFromTo[i].trainNumber);
+                Console.WriteLine(trainsFromTo[i].timeTableRows[i].type + " | ");
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
                                 
             }
@@ -86,11 +86,10 @@ namespace KoodinimiIdänpikajuna
 
             Console.WriteLine("Vaunun sisältämät palvelut: ");
             Console.WriteLine();
-            //Console.WriteLine("Catering: " + wagon.catering);
-            //Console.WriteLine("Luggage: " + wagon.luggage);
-            //Console.WriteLine("Pet: " + wagon.pet);
-            //Console.WriteLine("Playground: " + wagon.playground);
-            //Console.WriteLine("Smoking: " + wagon.smoking);
+            foreach (KeyValuePair<string, bool>item in wagon)
+            {
+                Console.WriteLine(item.Key + " " + item.Value);
+            }
 
         }
         public void IntermediateStation()
