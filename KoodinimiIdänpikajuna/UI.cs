@@ -60,9 +60,10 @@ namespace KoodinimiIdänpikajuna
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
-                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber);
+                Console.WriteLine(trainsFromTo[i].trainType + "|" + trainsFromTo[i].trainNumber);
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].type);
                 Console.WriteLine(trainsFromTo[i].timeTableRows[i].scheduledTime);
+                                
             }
 
         }
