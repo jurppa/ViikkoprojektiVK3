@@ -15,7 +15,7 @@ namespace KoodinimiIdänpikajuna
         /// </summary>
         public void StartMenu()
         {
-            Console.WriteLine("1. Juna aikataulut tänään");
+            Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Tietoa junan palveluista");
             Console.WriteLine("3. Aseman kautta kulkevat junat");
             Console.WriteLine("4. Junan nykyinen sijainti");
@@ -58,7 +58,7 @@ namespace KoodinimiIdänpikajuna
         }
         
         /// <summary>
-        /// Tämä metodi kysytään lähtöaseman ja pääteaseman jonka jälkeen tulostetaan lista lähtevistä junista tältä päivältä.
+        /// Tämä metodi kysytään lähtöaseman, pääteaseman ja päivämärän jonka jälkeen tulostetaan lista lähtevistä junista siltä päivältä.
         /// -Thien & Ari
         /// </summary>
         
