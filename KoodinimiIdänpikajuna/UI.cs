@@ -123,6 +123,7 @@ namespace KoodinimiIdänpikajuna
                 // Allaolevaa voi formatoida jos haluaa?
                 Console.WriteLine("Minuuttia myöhässä:");
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
+                Console.WriteLine();
             }
             Console.ReadKey();
         }
@@ -137,8 +138,24 @@ namespace KoodinimiIdänpikajuna
           
             Console.WriteLine("Haetun junan viimeinen tieto: " +  live.timestamp);
             Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
+            var nextStation = APIUtil.ShortNameToFullName(live.nextStation);
+            var previousStation = APIUtil.ShortNameToFullName(live.previousStation);
+            if (nextStation != null)
+            {
             Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
+            }
+            else
+            {
+                Console.WriteLine("Seuraava asema: Ei tiedossa vielä.");
+            }
+            if (previousStation != null)
+            { 
             Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
+            }
+            else
+            {
+                Console.WriteLine("Edellinen asema: Ei tiedossa.");
+            }
             Console.ReadKey();
         }
         /// <summary>
