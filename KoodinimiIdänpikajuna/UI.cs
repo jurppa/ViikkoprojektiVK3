@@ -120,6 +120,8 @@ namespace KoodinimiIdänpikajuna
             for (int i = 0; i < demTrains.Count; i++)
             {                
                 Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
+                Console.WriteLine("Minuuttia myöhässä:");
+                Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
             }
             Console.ReadKey();
         }

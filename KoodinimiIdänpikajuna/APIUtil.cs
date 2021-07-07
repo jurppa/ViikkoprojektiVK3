@@ -177,17 +177,17 @@ namespace KoodinimiIdänpikajuna
             ///</summary>
         }
         
-        public static int IsTrainLate(DateTime actual, DateTime scheduled)
+        public static string IsTrainLate(DateTime actual, DateTime scheduled)
         
         
         {
-            int minutesLate = 0;
+            string minutesLate = "";
             TimeSpan ts = new TimeSpan();
             if(actual > scheduled )
             { 
-                ts = actual - scheduled; minutesLate = Convert.ToInt32(ts); return minutesLate;
+                ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
             }
-            else { return 0; }
+            else { return "Aikataulussa"; }
 
         }
 
