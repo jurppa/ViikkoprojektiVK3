@@ -118,9 +118,10 @@ namespace KoodinimiIdänpikajuna
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
+                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
+                Console.WriteLine();
             }
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
             Console.ReadKey();
         }
         /// <summary>
@@ -141,8 +142,9 @@ namespace KoodinimiIdänpikajuna
             foreach (KeyValuePair<string, bool>item in wagon)
             {
                 Console.WriteLine(item.Key);
+                Console.WriteLine();
             }
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
             Console.ReadKey();
         }
         /// <summary>
@@ -198,6 +200,7 @@ namespace KoodinimiIdänpikajuna
             {
                 Console.WriteLine("Edellinen asema: Ei tiedossa.");
             }
+            Console.WriteLine();
             Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
             Console.ReadKey();
         }
