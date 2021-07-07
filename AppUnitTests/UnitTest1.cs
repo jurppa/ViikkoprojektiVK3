@@ -66,11 +66,11 @@ namespace AppUnitTests
             TimeSpan actual = new TimeSpan(4);
             TimeSpan scheduled = new TimeSpan(4);
 
-            if (actual == scheduled )
-            {
-                Console.WriteLine("Huomioin kellonajat.");
+            Assert.AreEqual(actual, scheduled);
+            
+                
            
-            }
+           
             ///<summary
             ///Tämä mittaa, että järjestelmä osaa tunnistaa yhtäsuuruiset ajat(tässä long tickejä)
             ///</summary>
