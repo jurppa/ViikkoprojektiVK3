@@ -176,7 +176,20 @@ namespace KoodinimiIdänpikajuna
             ///Palauttaa lyhenteen nimen kokonimenä.
             ///</summary>
         }
+        
+        public static int IsTrainLate(DateTime actual, DateTime scheduled)
+        
+        
+        {
+            int minutesLate = 0;
+            TimeSpan ts = new TimeSpan();
+            if(actual > scheduled )
+            { 
+                ts = actual - scheduled; minutesLate = Convert.ToInt32(ts); return minutesLate;
+            }
+            else { return 0; }
 
+        }
 
 
 

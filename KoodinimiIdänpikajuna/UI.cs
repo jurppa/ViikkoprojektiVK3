@@ -15,7 +15,7 @@ namespace KoodinimiIdänpikajuna
         /// </summary>
         public void StartMenu()
         {
-            Console.WriteLine("1. Juna aikataulut tänään");
+            Console.WriteLine("1. Juna aikataulut");
             Console.WriteLine("2. Tietoa junan palveluista");
             Console.WriteLine("3. Aseman kautta kulkevat junat");
             Console.WriteLine("4. Junan nykyinen sijainti");
@@ -58,7 +58,7 @@ namespace KoodinimiIdänpikajuna
         }
         
         /// <summary>
-        /// Tämä metodi kysytään lähtöaseman ja pääteaseman jonka jälkeen tulostetaan lista lähtevistä junista tältä päivältä.
+        /// Tämä metodi kysytään lähtöaseman, pääteaseman ja päivämärän jonka jälkeen tulostetaan lista lähtevistä junista siltä päivältä.
         /// -Thien & Ari
         /// </summary>
         
@@ -76,11 +76,11 @@ namespace KoodinimiIdänpikajuna
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
-                if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
+                //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                                
+                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].actualTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
             }
             Console.ReadKey();
         }
@@ -159,5 +159,7 @@ namespace KoodinimiIdänpikajuna
             }
             return date.ToString();
         }
+
+
     }
 }
