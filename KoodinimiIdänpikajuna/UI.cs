@@ -15,7 +15,7 @@ namespace KoodinimiIdänpikajuna
         /// </summary>
         public void StartMenu()
         {
-            Console.WriteLine("1. Juna aikataulut");
+            Console.WriteLine("1. Juna aikataulut tänään");
             Console.WriteLine("2. Tietoa junan palveluista");
             Console.WriteLine("3. Aseman kautta kulkevat junat");
             Console.WriteLine("4. Junan nykyinen sijainti");
@@ -68,9 +68,9 @@ namespace KoodinimiIdänpikajuna
             var station1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
-            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
-            string input = Console.ReadLine();
-            DateTime.Parse(DateTimeNow(input));
+            //Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
+            //string input = Console.ReadLine();
+            //DateTime.Parse(DateTimeNow(input));
             
 
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2);
