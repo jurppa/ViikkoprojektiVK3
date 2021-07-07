@@ -27,7 +27,7 @@ namespace AppUnitTests
         [TestMethod]
         public void TestMethod2()
         {
-        APIUtil.TrainFromTo("Helsinki" , "Tampere", "2021-07-07");
+        APIUtil.TrainFromTo("Helsinki" , "Tampere", DateTime.Now);
          
          Assert.IsNotNull("Testi menee läpi");
             ///<Summary>
