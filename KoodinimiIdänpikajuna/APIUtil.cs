@@ -170,7 +170,9 @@ namespace KoodinimiIdänpikajuna
 
 
             return fullNames;
-
+            ///<summary>
+            ///Palauttaa lyhenteen nimen kokonimenä.
+            ///</summary>
         }
 
 
