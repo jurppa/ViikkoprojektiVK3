@@ -80,7 +80,7 @@ namespace KoodinimiIdänpikajuna
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].actualTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
+                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
             }
             Console.ReadKey();
         }
