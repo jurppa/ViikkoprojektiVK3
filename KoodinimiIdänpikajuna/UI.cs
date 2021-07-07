@@ -116,8 +116,9 @@ namespace KoodinimiIdänpikajuna
             string[] stn = APIUtil.GetStationFullNames(station);
             station = stn[0];
             var demTrains = APIUtil.GoingThrough(station);
+            Console.WriteLine();
             for (int i = 0; i < demTrains.Count; i++)
-            {
+            {                
                 Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
             }
             Console.ReadKey();
@@ -140,6 +141,11 @@ namespace KoodinimiIdänpikajuna
         /// <summary>
         /// Tämä metodi Junan livesijainnin aseman mukaan, millon havainto on tehty sekä muuttaa asemien lyhenteet kokonimiksi.
         /// </summary>
+        /// 
+
+            /// <summary>
+            /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
+            /// </summary>
         public string DateTimeNow(string input)
         {
             DateTime date;
@@ -152,9 +158,6 @@ namespace KoodinimiIdänpikajuna
                 date = DateTime.Parse(input);
             }
             return date.ToString();
-            /// <summary>
-            /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
-            /// </summary>
         }
     }
 }
