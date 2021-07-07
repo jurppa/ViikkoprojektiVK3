@@ -68,7 +68,7 @@ namespace KoodinimiIdänpikajuna
             var station1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
-            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy): ");
+            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
             string input = Console.ReadLine();
             DateTime.Parse(DateTimeNow(input));
             
@@ -92,7 +92,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna junan numero: ");
             var trainNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Lähtöpäivämäärä(dd.mm.yyyy): ");
+            Console.WriteLine("Anna lähtöpäivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
             string input = Console.ReadLine();
             var date = DateTime.Parse(DateTimeNow(input));
             var wagon = APIUtil.GetWagonInfo(date, trainNumber);
@@ -137,7 +137,9 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Edellinen asema: " + live.previousStation);
             Console.ReadKey();
         }
-
+        /// <summary>
+        /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
+        /// </summary>
         public string DateTimeNow(string input)
         {
             DateTime date;
