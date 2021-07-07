@@ -76,7 +76,7 @@ namespace KoodinimiIdänpikajuna
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
-                if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
+                //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
