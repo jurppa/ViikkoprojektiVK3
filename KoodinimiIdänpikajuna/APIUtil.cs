@@ -180,7 +180,7 @@ namespace KoodinimiIdänpikajuna
             ///Palauttaa lyhenteen nimen kokonimenä.
             ///</summary>
         }
-        
+       
         public static string IsTrainLate(DateTime actual, DateTime scheduled)
         
         
@@ -194,6 +194,12 @@ namespace KoodinimiIdänpikajuna
             else { return "Aikataulussa"; }
 
         }
+        /// <summary>
+        ///  Tarkistaa onko juna ollut myöhässä, vähentää todellisesta ajasta ajastetun ajan
+        /// </summary>
+        /// <param name="actual"></param>
+        /// <param name="scheduled"></param>
+        /// <returns></returns>
 
 
 
