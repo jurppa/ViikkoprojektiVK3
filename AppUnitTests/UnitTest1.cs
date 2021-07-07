@@ -34,11 +34,6 @@ namespace AppUnitTests
             ///Tarkistaa, ettei lista ole tyhjä(eli kulkeeko välillä junia)
             ///</summary>
          
-
-
-
-        
-
         }
 
         [TestMethod]
@@ -63,26 +58,40 @@ namespace AppUnitTests
 
 
         }
-        [TestMethod]
-        public void isTrainReallyLate()
-        {
+        //[TestMethod]
+        //public void isTrainReallyLate()
+        //{
          
-            string minutesLate = "";
-            TimeSpan ts = new TimeSpan();
-            ts time1 = 
-            ts time2 = 
+        //    string minutesLate = "";
+        //    TimeSpan ts = new TimeSpan();
+        //    ts time1 = 
+        //    ts time2 = 
             
-            ////  string minutesLate = "";
-          //  TimeSpan ts = new TimeSpan();
-          //  if (actual > scheduled)
-          //  {
-          //      ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
-          //  }
-          //  else { return "Aikataulussa"; }
+        //    ////  string minutesLate = "";
+        //  //  TimeSpan ts = new TimeSpan();
+        //  //  if (actual > scheduled)
+        //  //  {
+        //  //      ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
+        //  //  }
+        //  //  else { return "Aikataulussa"; }
 
+        //}
+
+
+
+
+
+
+
+
+        [TestMethod]
+        public void ShortNameToFullNameShouldReturnTrue()
+        {
+            string actual = APIUtil.ShortNameToFullName("HKI");
+            string expected = "Helsinki asema";
+
+            Assert.AreEqual(expected, actual);
         }
-
-
     }
     }
 
