@@ -99,27 +99,36 @@ namespace KoodinimiIdänpikajuna
             var station1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
-            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
-            var input = Console.ReadLine();
-            DateTime date = DateTime.Parse(DateTimeNow(input));
 
-
-            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
-            for (int i = 0; i < trainsFromTo.Count; i++)
+            if (!hasSpecialChar(station1) && !hasSpecialChar(station2))
             {
-                int lastIndex = trainsFromTo[i].timeTableRows.Count;
-                //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
+                Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
+                var input = Console.ReadLine();
+                DateTime date = DateTime.Parse(DateTimeNow(input));
 
-                Console.WriteLine();
-                Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine(APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
-                Console.WriteLine();
-                Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
-                //Console.WriteLine(trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime);
-                
+
+
+                List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
+                for (int i = 0; i < trainsFromTo.Count; i++)
+                {
+                    int lastIndex = trainsFromTo[i].timeTableRows.Count;
+                    //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
+
+                    Console.WriteLine();
+                    Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
+                    Console.WriteLine(APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
+                    Console.WriteLine();
+                    Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
+                    //Console.WriteLine(trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime);
+
+                }
+                Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
+                Console.ReadKey();
             }
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
-            Console.ReadKey();
+            else
+            {
+                virheellinen();
+            }
         }
         /// <summary>
         /// Tämä metodi kertoo käyttäjälle junan palvelut junan numeron perusteella.
@@ -232,6 +241,16 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine();
             Console.ReadKey();
             Console.Clear();           
+        }
+        public static bool hasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,1234567890";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
         }
     }
 }
