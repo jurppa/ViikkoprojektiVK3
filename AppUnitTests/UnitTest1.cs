@@ -64,10 +64,26 @@ namespace AppUnitTests
 
         }
         [TestMethod]
-        public void ShortNameToFullNameShouldntToWork()
+        public void isTrainReallyLate()
         {
-          
+         
+            string minutesLate = "";
+            TimeSpan ts = new TimeSpan();
+            ts time1 = 
+            ts time2 = 
+            
+            ////  string minutesLate = "";
+          //  TimeSpan ts = new TimeSpan();
+          //  if (actual > scheduled)
+          //  {
+          //      ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
+          //  }
+          //  else { return "Aikataulussa"; }
+
         }
+
+
+    }
     }
 
-}
+
