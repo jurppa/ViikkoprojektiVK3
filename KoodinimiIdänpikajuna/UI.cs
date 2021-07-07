@@ -22,11 +22,25 @@ namespace KoodinimiIdänpikajuna
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             var input = Console.ReadLine();
+            UI ui = new UI();
+            if (input == "")
+            {
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                    Console.WriteLine();
+                    Console.ReadKey();
+                    ui.StartMenu();
+                }
+            }
+            else
+            {
+
+           
             char firstChar = input[0];
             bool isNumber = Char.IsDigit(firstChar);
-            UI ui = new UI();
 
-            if(isNumber != true || input.Length < 1 || input == null)
+            if(isNumber != true || input.Length < 1)
             {
                 Console.WriteLine();
                 Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
@@ -77,7 +91,8 @@ namespace KoodinimiIdänpikajuna
                     }
                 }
             }
-    }
+            }
+        }
         
         /// <summary>
         /// Tämä metodi kysytään lähtöaseman, pääteaseman ja päivämärän jonka jälkeen tulostetaan lista lähtevistä junista siltä päivältä.
