@@ -155,10 +155,13 @@ namespace KoodinimiIdänpikajuna
             string[] stn = APIUtil.GetStationFullNames(station);
             station = stn[0];
             var demTrains = APIUtil.GoingThrough(station);
+
             Console.WriteLine();
             for (int i = 0; i < demTrains.Count; i++)
             {
-                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
+                int lastIndex = demTrains[i].timeTableRows.Count;
+
+                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
                 // Allaolevaa voi formatoida jos haluaa?
                 Console.WriteLine("Minuuttia myöhässä:");
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
