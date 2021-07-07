@@ -131,10 +131,10 @@ namespace KoodinimiIdänpikajuna
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
           
-            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp);
-            Console.WriteLine("Juna on tällä hetkellä asemalla: " +  live.station);
+            Console.WriteLine("Haetun junan viimeinen tieto: " +  live.timestamp);
+            Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
             Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
-            Console.WriteLine("Edellinen asema: " + live.previousStation);
+            Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
             Console.ReadKey();
         }
         /// <summary>
