@@ -46,6 +46,7 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
                 Console.WriteLine();
                 Console.ReadKey();
+                Console.Clear();
                 ui.StartMenu();
             }
             else
@@ -87,6 +88,7 @@ namespace KoodinimiIdänpikajuna
                             Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
                             Console.WriteLine();
                             Console.ReadKey();
+                            Console.Clear();
                             ui.StartMenu();
                             continue;
                     }
