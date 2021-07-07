@@ -58,24 +58,22 @@ namespace AppUnitTests
 
 
         }
-        //[TestMethod]
-        //public void isTrainReallyLate()
-        //{
-         
-        //    string minutesLate = "";
-        //    TimeSpan ts = new TimeSpan();
-        //    ts time1 = 
-        //    ts time2 = 
-            
-        //    ////  string minutesLate = "";
-        //  //  TimeSpan ts = new TimeSpan();
-        //  //  if (actual > scheduled)
-        //  //  {
-        //  //      ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
-        //  //  }
-        //  //  else { return "Aikataulussa"; }
+        [TestMethod]
+        public void isTrainReallyLate()
+        {
 
-        //}
+            TimeSpan actual = new TimeSpan(4);
+            TimeSpan scheduled = new TimeSpan(4);
+
+            if (actual == scheduled )
+            {
+                Console.WriteLine("Huomioin kellonajat.");
+           
+            }
+            ///<summary
+            ///Tämä mittaa, että järjestelmä osaa tunnistaa yhtäsuuruiset ajat(tässä long tickejä)
+            ///</summary>
+        }
 
 
 
