@@ -69,15 +69,9 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
             Console.WriteLine("Anna päivämäärä(dd.mm.yyyy): ");
-            var input = Console.ReadLine();
-            if (input == null)
-            {
-                DateTime date = DateTime.Today;
-            }
-            else
-            {
-            DateTime date = DateTime.Parse(input);
-            }
+            string input = Console.ReadLine();
+            DateTimeNow(input);
+            
 
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2);
             for (int i = 0; i < trainsFromTo.Count; i++)
@@ -141,6 +135,20 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Seuraava asema: " + live.nextStation);
             Console.WriteLine("Edellinen asema: " + live.previousStation);
             Console.ReadKey();
+        }
+
+        public string DateTimeNow(string input)
+        {
+            DateTime date;
+            if (input == "")
+            {
+                date = DateTime.Now;
+            }
+            else
+            {
+                date = DateTime.Parse(input);
+            }
+            return date.ToString();
         }
     }
 }
