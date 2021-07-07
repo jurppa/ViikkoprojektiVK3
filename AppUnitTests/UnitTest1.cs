@@ -57,7 +57,11 @@ namespace AppUnitTests
             //Lis‰‰ testi shortname to fullname
 
 
-
+        }
+        [TestMethod]
+        public void ShortNameToFullNameShouldntToWork()
+        {
+          
         }
         [TestMethod]
         public void IsTrainLate()
