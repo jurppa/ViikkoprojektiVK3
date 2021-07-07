@@ -107,12 +107,16 @@ namespace KoodinimiIdänpikajuna
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
+                int lastIndex = trainsFromTo[i].timeTableRows.Count;
                 //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
+                Console.WriteLine(APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
                 Console.WriteLine();
+                Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
+                //Console.WriteLine(trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime);
+                
             }
             Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
             Console.ReadKey();
@@ -151,12 +155,15 @@ namespace KoodinimiIdänpikajuna
             string[] stn = APIUtil.GetStationFullNames(station);
             station = stn[0];
             var demTrains = APIUtil.GoingThrough(station);
+
             Console.WriteLine();
             for (int i = 0; i < demTrains.Count; i++)
             {
-                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
+                int lastIndex = demTrains[i].timeTableRows.Count;
+
+                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
                 // Allaolevaa voi formatoida jos haluaa?
-                Console.WriteLine("Minuuttia myöhässä:");
+             
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
                 Console.WriteLine();
 

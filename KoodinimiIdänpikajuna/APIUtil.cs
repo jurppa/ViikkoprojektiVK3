@@ -35,18 +35,19 @@ namespace KoodinimiIdänpikajuna
             {
                 stationNames = GetStationFullNames(fromStation, toStation);
             }
-            //string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
             string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationNames[0] + @"/" + stationNames[1] + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
             string json = CreateClient(url);
-           
+            
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
             var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
             .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
+
+
             return trains;
             
-
+            // trains[i].timetablerow[vika].scheduled time - trains[i].timetablerow[0].Scheduled time
             /// <summary>
             ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
             /// </summary>
@@ -188,7 +189,8 @@ namespace KoodinimiIdänpikajuna
             string minutesLate = "";
             TimeSpan ts = new TimeSpan();
             if(actual > scheduled )
-            { 
+            {
+                Console.WriteLine("Minuuttia myöhässä:");
                 ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
             }
             else { return "Aikataulussa"; }
