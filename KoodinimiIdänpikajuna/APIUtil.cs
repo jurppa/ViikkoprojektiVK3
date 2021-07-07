@@ -33,7 +33,7 @@ namespace KoodinimiIdänpikajuna
         public static List<Train> TrainFromTo(string fromStation, string toStation)
         {
             string[] stationNames = new string[2];
-            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation; stationNames[1] = toStation; }
+            if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation.ToUpper(); stationNames[1] = toStation.ToUpper(); }
             else
             {
                 stationNames = GetStationFullNames(fromStation, toStation);
@@ -80,8 +80,8 @@ namespace KoodinimiIdänpikajuna
 
 
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName.Contains(nameOneSplitted[0]));
-            var stationTwo = res.First(x => x.stationName.Contains(nameTwoSplitted[0]));
+            var stationOne = res.First(x => x.stationName.ToLower().Contains(nameOneSplitted[0].ToLower()));
+            var stationTwo = res.First(x => x.stationName.ToLower().Contains(nameTwoSplitted[0].ToLower()));
 
             string[] shortNames = { stationOne.stationShortCode, stationTwo.stationShortCode };
 
