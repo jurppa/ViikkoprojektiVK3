@@ -32,7 +32,7 @@ namespace AppUnitTests
         }
         [TestMethod]
         
-        public void GoingThrough()
+        public void GoingThroughShouldReturnTrue()
         {           
             var actual = APIUtil.GoingThrough("Tampere");
             Assert.IsNotNull(actual);
