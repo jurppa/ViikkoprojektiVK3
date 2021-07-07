@@ -1,6 +1,7 @@
 ﻿using KoodinimiIdänpikajuna.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,82 +28,71 @@ namespace KoodinimiIdänpikajuna
             if (input == "")
             {
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
-                    Console.WriteLine();
-                    Console.ReadKey();
+                    virheellinen();
                     ui.StartMenu();
                 }
             }
             else
             {
 
-           
-            char firstChar = input[0];
-            bool isNumber = Char.IsDigit(firstChar);
 
-            if(isNumber != true || input.Length < 1)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
-                Console.WriteLine();
-                Console.ReadKey();
-                Console.Clear();
-                ui.StartMenu();
-            }
-            else
-            {
-                int inputToInt = Int32.Parse(input);
-                while (input != null)
+                char firstChar = input[0];
+                bool isNumber = Char.IsDigit(firstChar);
+
+                if (isNumber != true || input.Length < 1)
                 {
-                    switch (inputToInt)
+                    virheellinen();
+                    ui.StartMenu();
+                }
+                else
+                {
+                    int inputToInt = Int32.Parse(input);
+                    while (input != null)
                     {
-                        case 1:
-                            Console.WriteLine();
-                            ui.FromTo();
-                            Console.Clear();
-                            ui.StartMenu();
-                            break;
-                        case 2:
-                            Console.WriteLine();
-                            ui.TrainInfo();
-                            Console.Clear();
-                            ui.StartMenu();
-                            break;
-                        case 3:
-                            Console.WriteLine();
-                            ui.GoingThroughTrains();
-                          
-                            Console.Clear();
-                            ui.StartMenu();
-                            break;
-                        case 4:
-                            Console.WriteLine();
-                            ui.LiveTrain();
-                            Console.Clear();
-                            ui.StartMenu();
-                            break;
-                        
+                        switch (inputToInt)
+                        {
+                            case 1:
+                                Console.WriteLine();
+                                ui.FromTo();
+                                Console.Clear();
+                                ui.StartMenu();
+                                break;
+                            case 2:
+                                Console.WriteLine();
+                                ui.TrainInfo();
+                                Console.Clear();
+                                ui.StartMenu();
+                                break;
+                            case 3:
+                                Console.WriteLine();
+                                ui.GoingThroughTrains();
 
-                        default:
-                            Console.WriteLine();
-                            Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
-                            Console.WriteLine();
-                            Console.ReadKey();
-                            Console.Clear();
-                            ui.StartMenu();
-                            continue;
+                                Console.Clear();
+                                ui.StartMenu();
+                                break;
+                            case 4:
+                                Console.WriteLine();
+                                ui.LiveTrain();
+                                Console.Clear();
+                                ui.StartMenu();
+                                break;
+
+
+                            default:
+                                virheellinen();
+                                ui.StartMenu();
+                                continue;
+                        }
                     }
                 }
             }
-            }
         }
-        
+
         /// <summary>
         /// Tämä metodi kysytään lähtöaseman, pääteaseman ja päivämärän jonka jälkeen tulostetaan lista lähtevistä junista siltä päivältä.
         /// -Thien & Ari
         /// </summary>
-        
+
         public void FromTo()
         {
             Console.WriteLine("Lähtöasema: ");
@@ -112,7 +102,7 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
             var input = Console.ReadLine();
             DateTime date = DateTime.Parse(DateTimeNow(input));
-            
+
 
             List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
             for (int i = 0; i < trainsFromTo.Count; i++)
@@ -122,7 +112,7 @@ namespace KoodinimiIdänpikajuna
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
+                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
                 Console.WriteLine();
                 Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
                 //Console.WriteLine(trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime);
@@ -146,7 +136,7 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine();
             Console.WriteLine("Vaunun sisältämät palvelut: ");
             Console.WriteLine();
-            foreach (KeyValuePair<string, bool>item in wagon)
+            foreach (KeyValuePair<string, bool> item in wagon)
             {
                 Console.WriteLine(item.Key);
                 Console.WriteLine();
@@ -167,13 +157,13 @@ namespace KoodinimiIdänpikajuna
             var demTrains = APIUtil.GoingThrough(station);
             Console.WriteLine();
             for (int i = 0; i < demTrains.Count; i++)
-            {                
+            {
                 Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
                 // Allaolevaa voi formatoida jos haluaa?
                 Console.WriteLine("Minuuttia myöhässä:");
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
                 Console.WriteLine();
-               
+
             }
             Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
             Console.ReadKey();
@@ -181,27 +171,27 @@ namespace KoodinimiIdänpikajuna
         //Junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
         //-Ari
         public void LiveTrain()
-        {   
+        {
             Console.WriteLine("Anna Junan numero: ");
             int tnumber = Convert.ToInt32(Console.ReadLine());
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
-          
-            Console.WriteLine("Haetun junan viimeinen tieto: " +  live.timestamp);
+
+            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp);
             Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
             //var nextStation = APIUtil.ShortNameToFullName(live.nextStation);
             //var previousStation = APIUtil.ShortNameToFullName(live.previousStation);
             if (live.nextStation != "END")
             {
-            Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
+                Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
             }
             else
             {
                 Console.WriteLine("Seuraava asema: Ei tiedossa vielä.");
             }
             if (live.previousStation != "END")
-            { 
-            Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
+            {
+                Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
             }
             else
             {
@@ -216,9 +206,9 @@ namespace KoodinimiIdänpikajuna
         /// </summary>
         /// 
 
-            /// <summary>
-            /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
-            /// </summary>
+        /// <summary>
+        /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
+        /// </summary>
         public string DateTimeNow(string input)
         {
             DateTime date;
@@ -232,7 +222,13 @@ namespace KoodinimiIdänpikajuna
             }
             return date.ToString();
         }
-
-
+        public void virheellinen()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
+            Console.WriteLine();
+            Console.ReadKey();
+            Console.Clear();           
+        }
     }
 }

@@ -30,8 +30,14 @@ namespace AppUnitTests
             Assert.IsNotNull(actual);
 
         }
+        [TestMethod]
+        
+        public void GoingThroughShouldReturnTrue()
+        {           
+            var actual = APIUtil.GoingThrough("Tampere");
+            Assert.IsNotNull(actual);
 
-
+        }
 
         [TestMethod]
         public void TrainFromTrueShouldntBeNull()
