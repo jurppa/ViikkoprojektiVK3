@@ -68,12 +68,12 @@ namespace KoodinimiIdänpikajuna
             var station1 = Console.ReadLine();
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
-            //Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
-            //string input = Console.ReadLine();
-            //DateTime.Parse(DateTimeNow(input));
+            Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
+            string input = Console.ReadLine();
+            DateTime.Parse(DateTimeNow(input));
             
 
-            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2);
+            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, input);
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
