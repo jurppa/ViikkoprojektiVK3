@@ -25,11 +25,12 @@ namespace AppUnitTests
 
         }
         [TestMethod]
-        public void TestMethod2()
+        public void TrainFromTrueShouldntBeNull()
         {
-        APIUtil.TrainFromTo("Helsinki" , "Tampere", DateTime.Now);
+          
+         var actual = APIUtil.TrainFromTo("Helsinki" , "Tampere", DateTime.Now);
          
-         Assert.IsNotNull("Testi menee läpi");
+         Assert.IsNotNull(actual);
             ///<Summary>
             ///Tarkistaa, ettei lista ole tyhjä(eli kulkeeko välillä junia)
             ///</summary>
