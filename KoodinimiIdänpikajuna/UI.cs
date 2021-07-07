@@ -58,7 +58,7 @@ namespace KoodinimiIdänpikajuna
         }
         
         /// <summary>
-        /// Tämä metodi kysytään lähtöaseman, pääteaseman, ja päivämäärän jonka jälkeen tulostetaan lista lähtevistä junista.
+        /// Tämä metodi kysytään lähtöaseman ja pääteaseman jonka jälkeen tulostetaan lista lähtevistä junista tältä päivältä.
         /// -Thien & Ari
         /// </summary>
         
