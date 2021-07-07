@@ -40,11 +40,12 @@ namespace KoodinimiIdänpikajuna
             }
             string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
             string json = CreateClient(url);
-
+            
 
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
-
-            return res;
+            var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
+            .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
+            return trains;
 
             /// <summary>
             ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
