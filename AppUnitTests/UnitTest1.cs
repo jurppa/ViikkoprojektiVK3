@@ -34,11 +34,6 @@ namespace AppUnitTests
             ///Tarkistaa, ettei lista ole tyhjä(eli kulkeeko välillä junia)
             ///</summary>
          
-
-
-
-        
-
         }
 
         [TestMethod]
@@ -64,6 +59,14 @@ namespace AppUnitTests
 
 
         }
+        [TestMethod]
+        public void IsTrainLate()
+        {
+            Assert.Inconclusive();
+        }
     }
+
+
+
 
 }
