@@ -11,10 +11,7 @@ namespace KoodinimiIdänpikajuna
 {
     public class APIUtil
     {
-        private const string APIURL = "https://rata.digitraffic.fi/api/v1";
         private const string allStations = "https://rata.digitraffic.fi/api/v1/metadata/stations";
-        private const string WAGONURL = "https://rata.digitraffic.fi/api/v1/compositions/";
-        private const string GOINGTHROUGHURL = "https://rata.digitraffic.fi/api/v1/live-trains/station";
 
         public static string CreateClient(string url)
         {
