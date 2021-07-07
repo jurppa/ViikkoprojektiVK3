@@ -22,40 +22,62 @@ namespace KoodinimiIdänpikajuna
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             var input = Console.ReadLine();
-            int inputToInt = Int32.Parse(input);
+            char firstChar = input[0];
+            bool isNumber = Char.IsDigit(firstChar);
             UI ui = new UI();
 
-            while(input != null)
+            if(isNumber != true)
             {
-                switch (inputToInt)
+                Console.WriteLine();
+                Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                Console.WriteLine();
+                Console.ReadKey();
+                ui.StartMenu();
+            }
+            else
+            {
+                int inputToInt = Int32.Parse(input);
+                while (input != null)
                 {
-                    case 1:
-                        Console.WriteLine();
-                        ui.FromTo();
-                        Console.Clear();
-                        ui.StartMenu();
-                        break;
-                    case 2:
-                        Console.WriteLine();
-                        ui.TrainInfo();
-                        Console.Clear();
-                        ui.StartMenu();
-                        break;
-                    case 3:
-                        Console.WriteLine();
-                        ui.GoingThroughTrains();
-                        Console.Clear();
-                        ui.StartMenu();
-                        break;
-                    case 4:
-                        Console.WriteLine();
-                        ui.LiveTrain();
-                        Console.Clear();
-                        ui.StartMenu();
-                        break;
+                    switch (inputToInt)
+                    {
+                        case 1:
+                            Console.WriteLine();
+                            ui.FromTo();
+                            Console.Clear();
+                            ui.StartMenu();
+                            break;
+                        case 2:
+                            Console.WriteLine();
+                            ui.TrainInfo();
+                            Console.Clear();
+                            ui.StartMenu();
+                            break;
+                        case 3:
+                            Console.WriteLine();
+                            ui.GoingThroughTrains();
+                            Console.Clear();
+                            ui.StartMenu();
+                            break;
+                        case 4:
+                            Console.WriteLine();
+                            ui.LiveTrain();
+                            Console.Clear();
+                            ui.StartMenu();
+                            break;
+                        
+
+                        default:
+                            Console.WriteLine();
+                            Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            ui.StartMenu();
+                            continue;
+                    }
                 }
             }
-        }
+    }
         
         /// <summary>
         /// Tämä metodi kysytään lähtöaseman, pääteaseman ja päivämärän jonka jälkeen tulostetaan lista lähtevistä junista siltä päivältä.
