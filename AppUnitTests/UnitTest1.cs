@@ -83,22 +83,11 @@ namespace AppUnitTests
 
             Assert.AreEqual(actual, scheduled);
             
-                
-           
-           
+    
             ///<summary
             ///Tämä mittaa, että järjestelmä osaa tunnistaa yhtäsuuruiset ajat(tässä long tickejä)
             ///</summary>
         }
-
-
-
-
-
-
-
-
-
 
 
         [TestMethod]
