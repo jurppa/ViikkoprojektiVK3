@@ -98,7 +98,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna junan numero: ");
             var trainNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Lähtöpäivämäärä: ");
+            Console.WriteLine("Lähtöpäivämäärä(dd.mm.yyyy): ");
             var date = Convert.ToDateTime( Console.ReadLine());
             var wagon = APIUtil.GetWagonInfo(date, trainNumber);
             Console.WriteLine();
