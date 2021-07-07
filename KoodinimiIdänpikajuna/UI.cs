@@ -69,11 +69,11 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
             Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
-            string input = Console.ReadLine();
-            DateTime.Parse(DateTimeNow(input));
+            var input = Console.ReadLine();
+            DateTime date = DateTime.Parse(DateTimeNow(input));
             
 
-            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, input);
+            List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
             for (int i = 0; i < trainsFromTo.Count; i++)
             {
                 if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
