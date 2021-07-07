@@ -74,7 +74,10 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine("Tarkista asemien nimet.");
                 return new string[0];
             }
-
+            if(shortNameOne.Length == 3)
+            {
+                return new string[1] { shortNameOne };
+            }
 
             string[] nameOneSplitted = shortNameOne.Split(" ");
             string[] nameTwoSplitted = shortNameTwo.Split(" ");
@@ -96,6 +99,10 @@ namespace KoodinimiIdänpikajuna
         }
         public static List<Train> GoingThrough(string stationName)
         {
+            if(stationName.Length < 3)
+            {
+                stationName = GetStationFullNames(stationName).First();
+            }
             string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?departing_trains=5";
             string json = CreateClient(goingThroughUrl);
 
