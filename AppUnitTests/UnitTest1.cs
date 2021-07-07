@@ -24,7 +24,7 @@ namespace AppUnitTests
         }
 
         [TestMethod]
-        public void TrackLiveTrainLocation()
+        public void TrackLiveTrainLocationShouldReturnTrue()
         {
             var actual = APIUtil.TrackLiveTrainLocation(150);
             Assert.IsNotNull(actual);
