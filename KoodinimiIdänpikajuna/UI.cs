@@ -138,9 +138,9 @@ namespace KoodinimiIdänpikajuna
           
             Console.WriteLine("Haetun junan viimeinen tieto: " +  live.timestamp);
             Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
-            var nextStation = APIUtil.ShortNameToFullName(live.nextStation);
-            var previousStation = APIUtil.ShortNameToFullName(live.previousStation);
-            if (nextStation != null)
+            //var nextStation = APIUtil.ShortNameToFullName(live.nextStation);
+            //var previousStation = APIUtil.ShortNameToFullName(live.previousStation);
+            if (live.nextStation != "END")
             {
             Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
             }
@@ -148,7 +148,7 @@ namespace KoodinimiIdänpikajuna
             {
                 Console.WriteLine("Seuraava asema: Ei tiedossa vielä.");
             }
-            if (previousStation != null)
+            if (live.previousStation != "END")
             { 
             Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
             }
