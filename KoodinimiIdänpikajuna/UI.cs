@@ -11,6 +11,7 @@ namespace KoodinimiIdänpikajuna
     {
         /// <summary>
         /// StartMenu valikosta kaikki lähtee liikkeelle ja täällä käyttäjä voi valita mitä haluaa tehdä. 
+        ///
         /// -Thien
         /// </summary>
         public void StartMenu()
@@ -27,7 +28,7 @@ namespace KoodinimiIdänpikajuna
             {
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                    Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
                     Console.WriteLine();
                     Console.ReadKey();
                     ui.StartMenu();
@@ -43,7 +44,7 @@ namespace KoodinimiIdänpikajuna
             if(isNumber != true || input.Length < 1)
             {
                 Console.WriteLine();
-                Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
                 Console.WriteLine();
                 Console.ReadKey();
                 Console.Clear();
@@ -85,7 +86,7 @@ namespace KoodinimiIdänpikajuna
 
                         default:
                             Console.WriteLine();
-                            Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
+                            Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
                             Console.WriteLine();
                             Console.ReadKey();
                             Console.Clear();
