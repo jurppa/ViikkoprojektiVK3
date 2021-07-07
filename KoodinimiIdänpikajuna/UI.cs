@@ -138,7 +138,7 @@ namespace KoodinimiIdänpikajuna
             Console.ReadKey();
         }
         /// <summary>
-        /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
+        /// Tämä metodi Junan livesijainnin aseman mukaan, millon havainto on tehty sekä muuttaa asemien lyhenteet kokonimiksi.
         /// </summary>
         public string DateTimeNow(string input)
         {
@@ -152,6 +152,9 @@ namespace KoodinimiIdänpikajuna
                 date = DateTime.Parse(input);
             }
             return date.ToString();
+            /// <summary>
+            /// Tämä metodi palauttaa nykyisen päivämäärän ja ajan jos käyttäjä ei sitä manuaalisesti syötä vaan painaa enteriä.
+            /// </summary>
         }
     }
 }
