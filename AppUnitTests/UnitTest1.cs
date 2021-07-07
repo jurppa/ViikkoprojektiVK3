@@ -21,9 +21,18 @@ namespace AppUnitTests
             ///Tarkistaa, toimiiko asemien koko nimen hakemisen.
             /// </summary>
 
+        }
 
+        [TestMethod]
+        public void TrackLiveTrainLocationShouldReturnTrue()
+        {
+            var actual = APIUtil.TrackLiveTrainLocation(150);
+            Assert.IsNotNull(actual);
 
         }
+
+
+
         [TestMethod]
         public void TrainFromTrueShouldntBeNull()
         {
