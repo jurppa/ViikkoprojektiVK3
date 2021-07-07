@@ -30,7 +30,7 @@ namespace KoodinimiIdänpikajuna
             return json;
         }
 
-        public static List<Train> TrainFromTo(string fromStation, string toStation, string dt)
+        public static List<Train> TrainFromTo(string fromStation, string toStation, DateTime dt)
         {
             string[] stationNames = new string[2];
             if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation.ToUpper(); stationNames[1] = toStation.ToUpper(); }
@@ -40,7 +40,7 @@ namespace KoodinimiIdänpikajuna
             }
             //string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
-            string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + fromStation + @"/" + toStation + "?departure_date=" +dt+ "&include_nonstopping=false";
+            string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + fromStation + @"/" + toStation + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
             string json = CreateClient(url);
            
 
