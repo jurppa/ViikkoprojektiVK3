@@ -70,6 +70,7 @@ namespace KoodinimiIdänpikajuna
                         case 3:
                             Console.WriteLine();
                             ui.GoingThroughTrains();
+                          
                             Console.Clear();
                             ui.StartMenu();
                             break;
@@ -119,6 +120,7 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
                 Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
             }
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
             Console.ReadKey();
         }
         /// <summary>
@@ -140,6 +142,7 @@ namespace KoodinimiIdänpikajuna
             {
                 Console.WriteLine(item.Key);
             }
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
             Console.ReadKey();
         }
         /// <summary>
@@ -161,7 +164,9 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine("Minuuttia myöhässä:");
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
                 Console.WriteLine();
+               
             }
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
             Console.ReadKey();
         }
         //Junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
@@ -193,6 +198,7 @@ namespace KoodinimiIdänpikajuna
             {
                 Console.WriteLine("Edellinen asema: Ei tiedossa.");
             }
+            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
             Console.ReadKey();
         }
         /// <summary>
