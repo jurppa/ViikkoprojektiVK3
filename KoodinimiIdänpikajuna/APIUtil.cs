@@ -107,7 +107,6 @@ namespace KoodinimiIdänpikajuna
             
             var res = JsonConvert.DeserializeObject<List<Train>>(json);
             var nextTrainsGoingThrough = res.OrderByDescending(x => x.timeTableRows[0].scheduledTime).Take(5).ToList();   //.Where(x => x.timeTableRows[0].scheduledTime > DateTime.Now).ToList(); 
-
             return nextTrainsGoingThrough;
             /// <summary>
             /// GoingThroughissa haetaan jonkin tietyn aseman kautta kulkevat junat, palauttaa kaksi junaa.
