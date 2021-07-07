@@ -48,6 +48,7 @@ namespace KoodinimiIdänpikajuna
             var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
             .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
             return trains;
+            
 
             /// <summary>
             ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
