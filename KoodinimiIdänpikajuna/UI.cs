@@ -26,7 +26,7 @@ namespace KoodinimiIdänpikajuna
             bool isNumber = Char.IsDigit(firstChar);
             UI ui = new UI();
 
-            if(isNumber != true)
+            if(isNumber != true || input.Length < 1 || input == null)
             {
                 Console.WriteLine();
                 Console.WriteLine("Syöte on virheellinen! Yritä uudelleen");
