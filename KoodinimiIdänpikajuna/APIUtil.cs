@@ -40,7 +40,7 @@ namespace KoodinimiIdänpikajuna
             }
             //string url = $"{APIURL}/schedules?departure_station={stationNames[0]}&arrival_station={stationNames[1]}";
 
-            string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + fromStation + @"/" + toStation + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
+            string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationNames[0] + @"/" + stationNames[1] + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
             string json = CreateClient(url);
            
 
