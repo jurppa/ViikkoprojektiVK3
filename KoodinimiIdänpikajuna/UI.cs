@@ -163,7 +163,7 @@ namespace KoodinimiIdänpikajuna
 
                 Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
                 // Allaolevaa voi formatoida jos haluaa?
-                Console.WriteLine("Minuuttia myöhässä:");
+             
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
                 Console.WriteLine();
 

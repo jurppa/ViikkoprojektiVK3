@@ -189,7 +189,8 @@ namespace KoodinimiIdänpikajuna
             string minutesLate = "";
             TimeSpan ts = new TimeSpan();
             if(actual > scheduled )
-            { 
+            {
+                Console.WriteLine("Minuuttia myöhässä:");
                 ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
             }
             else { return "Aikataulussa"; }
