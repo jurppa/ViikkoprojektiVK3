@@ -74,7 +74,10 @@ namespace KoodinimiIdänpikajuna
                 Console.WriteLine("Tarkista asemien nimet.");
                 return new string[0];
             }
-
+            if(shortNameOne.Length == 3)
+            {
+                return new string[1] { shortNameOne };
+            }
 
             string[] nameOneSplitted = shortNameOne.Split(" ");
             string[] nameTwoSplitted = shortNameTwo.Split(" ");
@@ -96,6 +99,10 @@ namespace KoodinimiIdänpikajuna
         }
         public static List<Train> GoingThrough(string stationName)
         {
+            if(stationName.Length < 3)
+            {
+                stationName = GetStationFullNames(stationName).First();
+            }
             string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?departing_trains=5";
             string json = CreateClient(goingThroughUrl);
 
@@ -177,17 +184,17 @@ namespace KoodinimiIdänpikajuna
             ///</summary>
         }
         
-        public static int IsTrainLate(DateTime actual, DateTime scheduled)
+        public static string IsTrainLate(DateTime actual, DateTime scheduled)
         
         
         {
-            int minutesLate = 0;
+            string minutesLate = "";
             TimeSpan ts = new TimeSpan();
             if(actual > scheduled )
             { 
-                ts = actual - scheduled; minutesLate = Convert.ToInt32(ts); return minutesLate;
+                ts = actual - scheduled; minutesLate = ts.ToString(); return minutesLate;
             }
-            else { return 0; }
+            else { return "Aikataulussa"; }
 
         }
 

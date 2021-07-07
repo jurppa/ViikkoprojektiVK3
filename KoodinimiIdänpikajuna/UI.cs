@@ -80,7 +80,7 @@ namespace KoodinimiIdänpikajuna
 
                 Console.WriteLine();
                 Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
-                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].actualTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
+                Console.WriteLine("Minuutit myöhässä: " + APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime ,trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));                
             }
             Console.ReadKey();
         }
@@ -120,6 +120,9 @@ namespace KoodinimiIdänpikajuna
             for (int i = 0; i < demTrains.Count; i++)
             {                
                 Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[i].stationShortCode));
+                // Allaolevaa voi formatoida jos haluaa?
+                Console.WriteLine("Minuuttia myöhässä:");
+                Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
             }
             Console.ReadKey();
         }
