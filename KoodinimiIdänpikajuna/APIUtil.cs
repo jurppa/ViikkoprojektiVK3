@@ -40,13 +40,27 @@ namespace KoodinimiIdänpikajuna
             string json = CreateClient(url);
             
 
-            var res = JsonConvert.DeserializeObject<List<Train>>(json);
-            var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
-            .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
 
+            try
+            {
+                var res = JsonConvert.DeserializeObject<List<Train>>(json);
 
-            return trains;
-            
+                var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
+          .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
+
+                return trains;
+            }
+            catch (Exception)
+            {
+
+                UI ui = new UI();
+
+                ui.hasFaultInINput();
+
+                ui.StartMenu();
+            }
+
+            return new List<Train>();
             // trains[i].timetablerow[vika].scheduled time - trains[i].timetablerow[0].Scheduled time
             /// <summary>
             ///TrainFromTo palauttaa Junan reitin asemalta A, asemalle B.
