@@ -38,15 +38,13 @@ namespace KoodinimiIdänpikajuna
 
             string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationNames[0] + @"/" + stationNames[1] + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
             string json = CreateClient(url);
-            
-
-
+ 
             try
             {
                 var res = JsonConvert.DeserializeObject<List<Train>>(json);
 
                 var trains = res.Where(x => x.timeTableRows[0].scheduledTime.ToLocalTime() > DateTime.Now.ToLocalTime())
-          .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
+                .OrderBy(x => x.timeTableRows[0].scheduledTime).ToList();
 
                 return trains;
             }
