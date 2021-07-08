@@ -28,7 +28,7 @@ namespace KoodinimiIdänpikajuna
             if (input == "")
             {
                 {
-                    virheellinen();
+                    hasFaultInINput();
                     ui.StartMenu();
                 }
             }
@@ -41,7 +41,7 @@ namespace KoodinimiIdänpikajuna
 
                 if (isNumber != true || input.Length < 1)
                 {
-                    virheellinen();
+                    hasFaultInINput();
                     ui.StartMenu();
                 }
                 else
@@ -79,7 +79,7 @@ namespace KoodinimiIdänpikajuna
 
 
                             default:
-                                virheellinen();
+                                hasFaultInINput();
                                 ui.StartMenu();
                                 continue;
                         }
@@ -127,7 +127,7 @@ namespace KoodinimiIdänpikajuna
             }
             else
             {
-                virheellinen();
+                hasFaultInINput();
             }
         }
         /// <summary>
@@ -234,7 +234,7 @@ namespace KoodinimiIdänpikajuna
             }
             return date.ToString();
         }
-        public void virheellinen()
+        public void hasFaultInINput()
         {
             Console.WriteLine();
             Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
