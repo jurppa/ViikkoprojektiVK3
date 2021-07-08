@@ -137,21 +137,31 @@ namespace KoodinimiIdänpikajuna
         public void TrainInfo()
         {
             Console.WriteLine("Anna junan numero: ");
-            var trainNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Anna lähtöpäivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
-            string input = Console.ReadLine();
-            var date = DateTime.Parse(DateTimeNow(input));
-            var wagon = APIUtil.GetWagonInfo(date, trainNumber);
-            Console.WriteLine();
-            Console.WriteLine("Vaunun sisältämät palvelut: ");
-            Console.WriteLine();
-            foreach (KeyValuePair<string, bool> item in wagon)
+            var input = Console.ReadLine();
+            if (!hasLetterChar(input))
             {
-                Console.WriteLine(item.Key);
+                var trainNumber = Convert.ToInt32(input);
+                Console.WriteLine("Anna lähtöpäivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
+                input = Console.ReadLine();
+                var date = DateTime.Parse(DateTimeNow(input));
+                var wagon = APIUtil.GetWagonInfo(date, trainNumber);
                 Console.WriteLine();
+                Console.WriteLine("Vaunun sisältämät palvelut: ");
+                Console.WriteLine();
+
+
+                foreach (KeyValuePair<string, bool> item in wagon)
+                {
+                    Console.WriteLine(item.Key);
+                    Console.WriteLine();
+                }
+                Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
+                Console.ReadKey();
             }
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
-            Console.ReadKey();
+            else
+            {
+                hasFaultInINput();
+            }
         }
         /// <summary>
         /// Metodi katsoo aseman läpi 5 seuraavaa menevää junaa ja niiden pääteasemat.
@@ -170,9 +180,9 @@ namespace KoodinimiIdänpikajuna
             {
                 int lastIndex = demTrains[i].timeTableRows.Count;
 
-                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
+                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex - 1].stationShortCode));
                 // Allaolevaa voi formatoida jos haluaa?
-             
+
                 Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
                 Console.WriteLine();
 
@@ -240,12 +250,22 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Syöte on virheellinen! Yritä uudelleen, palaa menuun painamalla mitä tahansa näppäintä.");
             Console.WriteLine();
             Console.ReadKey();
-            Console.Clear();           
+            Console.Clear();
         }
         public static bool hasSpecialChar(string input)
         {
             string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,1234567890";
             foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
+        }
+        public static bool hasLetterChar(string input)
+        {
+            string letterChar = @"abcdefghijklmnopqrstyvxzåäö";
+            foreach (var item in letterChar)
             {
                 if (input.Contains(item)) return true;
             }
