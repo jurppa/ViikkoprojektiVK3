@@ -205,32 +205,39 @@ namespace KoodinimiIdänpikajuna
         public void LiveTrain()
         {
             Console.WriteLine("Anna Junan numero: ");
-            int tnumber = Convert.ToInt32(Console.ReadLine());
+            var input = Console.ReadLine();
+            if(!hasLetterChar(input))
+            {
+                int tnumber = Convert.ToInt32(input);
+                var live = APIUtil.TrackLiveTrainLocation(tnumber);
 
-            var live = APIUtil.TrackLiveTrainLocation(tnumber);
-
-            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp.ToLocalTime());
-            Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
+                Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp.ToLocalTime());
+                Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
        
-            if (live.nextStation != "END")
-            {
-                Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
+                if (live.nextStation != "END")
+                {
+                    Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));
+                }
+                else
+                {
+                    Console.WriteLine("Seuraava asema: Ei tiedossa vielä.");
+                }
+                if (live.previousStation != "END")
+                {
+                    Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
+                }
+                else
+                {
+                    Console.WriteLine("Edellinen asema: Ei tiedossa.");
+                }
+                Console.WriteLine();
+                Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
+                Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("Seuraava asema: Ei tiedossa vielä.");
+                hasFaultInINput();
             }
-            if (live.previousStation != "END")
-            {
-                Console.WriteLine("Edellinen asema: " + APIUtil.ShortNameToFullName(live.previousStation));
-            }
-            else
-            {
-                Console.WriteLine("Edellinen asema: Ei tiedossa.");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun");
-            Console.ReadKey();
         }
         /// <summary>
         /// Tämä metodi Junan livesijainnin aseman mukaan, millon havainto on tehty sekä muuttaa asemien lyhenteet kokonimiksi.
@@ -273,7 +280,7 @@ namespace KoodinimiIdänpikajuna
         }
         public static bool hasLetterChar(string input)
         {
-            string letterChar = @"abcdefghijklmnopqrstyvxzåäö";
+            string letterChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,abcdefghijklmnopqrstyvxzåäö";
             foreach (var item in letterChar)
             {
                 if (input.Contains(item)) return true;
