@@ -21,6 +21,7 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("2. Tietoa junan palveluista");
             Console.WriteLine("3. Aseman kautta kulkevat junat");
             Console.WriteLine("4. Junan nykyinen sijainti");
+            Console.WriteLine("0. Poistu sovelluksesta");
             Console.Write("Valitse toiminta syöttämällä oikea numero: ");
 
             var input = Console.ReadLine();
@@ -76,7 +77,9 @@ namespace KoodinimiIdänpikajuna
                                 Console.Clear();
                                 ui.StartMenu();
                                 break;
-
+                            case 0:
+                                Environment.Exit(0);
+                                break;
 
                             default:
                                 hasFaultInINput();
