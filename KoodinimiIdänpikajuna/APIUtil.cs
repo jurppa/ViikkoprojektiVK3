@@ -84,13 +84,30 @@ namespace KoodinimiIdänpikajuna
 
 
             var res = JsonConvert.DeserializeObject<List<Station>>(json);
-            var stationOne = res.First(x => x.stationName.ToLower().Contains(nameOneSplitted[0].ToLower()));
-            var stationTwo = res.First(x => x.stationName.ToLower().Contains(nameTwoSplitted[0].ToLower()));
+            try
+            {
+                var stationOne = res.First(x => x.stationName.ToLower().Contains(nameOneSplitted[0].ToLower()));
+                var stationTwo = res.First(x => x.stationName.ToLower().Contains(nameTwoSplitted[0].ToLower()));
+                string[] shortNames = { stationOne.stationShortCode, stationTwo.stationShortCode };
+                return shortNames;
 
-            string[] shortNames = { stationOne.stationShortCode, stationTwo.stationShortCode };
+            }
+            catch (Exception e)
+            {
+
+                UI ui = new UI();
+               
+                ui.hasFaultInINput();
+               
+                ui.StartMenu();
+            }
+           
+           
+            return new string[] { "0"};
 
 
-            return shortNames;
+            
+
             /// <summary>
             /// GetStationFullName palauttaa kahden aseman(lähtö-määränpäät) nimet jos ei tiedä lyhennettä. Koodi ottaa huomioon, että jos asema on esimerkiksi Helsinki Tavara, niin sitä voi hakea pelkällä Helsinki:llä.
             /// </summary>
