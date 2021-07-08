@@ -161,24 +161,30 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna aseman nimi: ");
             var station = Console.ReadLine();
-            string[] stn = APIUtil.GetStationFullNames(station);
-            station = stn[0];
-            var demTrains = APIUtil.GoingThrough(station);
-
-            Console.WriteLine();
-            for (int i = 0; i < demTrains.Count; i++)
+            if(!hasSpecialChar(station))
             {
-                int lastIndex = demTrains[i].timeTableRows.Count;
-
-                Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
-                // Allaolevaa voi formatoida jos haluaa?
-             
-                Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));
+                string[] stn = APIUtil.GetStationFullNames(station);
+                station = stn[0];
+                var demTrains = APIUtil.GoingThrough(station);
+                
                 Console.WriteLine();
+                for (int i = 0; i < demTrains.Count; i++)
+                {
+                    int lastIndex = demTrains[i].timeTableRows.Count;
 
+                    Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
+                    // Allaolevaa voi formatoida jos haluaa?
+             
+                    Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));                        Console.WriteLine();
+
+                }
+                Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
+                Console.ReadKey();
             }
-            Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
-            Console.ReadKey();
+            else
+            {
+                hasFaultInINput();
+            }
         }
         //Junan "signaalin" live-seuranta. Haetaan nykyinen, seuraava ja edellinen asema junan numeron perusteella.
         //-Ari
