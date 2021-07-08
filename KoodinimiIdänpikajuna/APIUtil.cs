@@ -165,9 +165,25 @@ namespace KoodinimiIdänpikajuna
 
 
             var res = JsonConvert.DeserializeObject<List<Location>>(json);
+            try
+            {
             var whereIsTrainAt = res.First();
             Console.WriteLine(whereIsTrainAt.station);
             return whereIsTrainAt;
+
+            }
+            catch (Exception)
+            {
+                UI ui = new UI();
+
+                ui.hasFaultInINput();
+
+                ui.StartMenu();
+                
+            }
+
+            return new Location();
+        
             /// <summary>
             /// TracLiveTrainLocation palauttaa junan numerolla junan sijainnin.
             /// </summary>
