@@ -33,7 +33,7 @@ namespace KoodinimiIdänpikajuna
             if (fromStation.Length == 3 && toStation.Length == 3) { stationNames[0] = fromStation.ToUpper(); stationNames[1] = toStation.ToUpper(); }
             else
             {
-                stationNames = GetStationFullNames(fromStation, toStation);
+                stationNames = GetStationShortNames(fromStation, toStation);
             }
 
             string url = @"https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationNames[0] + @"/" + stationNames[1] + "?departure_date=" + dt.ToString("yyyy-MM-dd") + "&include_nonstopping=false";
@@ -65,7 +65,7 @@ namespace KoodinimiIdänpikajuna
             };
         }
 
-        public static string[] GetStationFullNames(string shortNameOne, string shortNameTwo = "Helsinki")
+        public static string[] GetStationShortNames(string shortNameOne, string shortNameTwo = "Helsinki")
         {
             if (shortNameOne.Length < 2 || shortNameTwo.Length < 2)
 
@@ -75,7 +75,7 @@ namespace KoodinimiIdänpikajuna
             }
             if(shortNameOne.Length == 3)
             {
-                return new string[1] { shortNameOne };
+                return new string[] { shortNameOne };
             }
 
             string[] nameOneSplitted = shortNameOne.Split(" ");
@@ -117,7 +117,7 @@ namespace KoodinimiIdänpikajuna
         {
             if(stationName.Length < 3)
             {
-                stationName = GetStationFullNames(stationName).First();
+                stationName = GetStationShortNames(stationName).First();
             }
             string goingThroughUrl = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + stationName + "?departing_trains=5";
             string json = CreateClient(goingThroughUrl);

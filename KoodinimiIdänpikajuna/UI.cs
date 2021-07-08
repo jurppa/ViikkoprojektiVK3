@@ -173,7 +173,7 @@ namespace KoodinimiIdänpikajuna
             var station = Console.ReadLine();
             if(!hasSpecialChar(station))
             {
-                string[] stn = APIUtil.GetStationFullNames(station);
+                string[] stn = APIUtil.GetStationShortNames(station);
                 station = stn[0];
                 var demTrains = APIUtil.GoingThrough(station);
                 
@@ -183,8 +183,6 @@ namespace KoodinimiIdänpikajuna
                     int lastIndex = demTrains[i].timeTableRows.Count;
 
                     Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
-                    // Allaolevaa voi formatoida jos haluaa?
-             
                     Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[i].scheduledTime));                        Console.WriteLine();
 
                 }
@@ -205,10 +203,9 @@ namespace KoodinimiIdänpikajuna
 
             var live = APIUtil.TrackLiveTrainLocation(tnumber);
 
-            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp);
+            Console.WriteLine("Haetun junan viimeinen tieto: " + live.timestamp.ToLocalTime());
             Console.WriteLine("Juna on tällä hetkellä asemalla: " + APIUtil.ShortNameToFullName(live.station));
-            //var nextStation = APIUtil.ShortNameToFullName(live.nextStation);
-            //var previousStation = APIUtil.ShortNameToFullName(live.previousStation);
+       
             if (live.nextStation != "END")
             {
                 Console.WriteLine("Seuraava asema: " + APIUtil.ShortNameToFullName(live.nextStation));

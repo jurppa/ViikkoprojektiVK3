@@ -12,7 +12,7 @@ namespace AppUnitTests
         {
 
             string[] expected = { "TPE", "HKI" };
-            string[] actual = APIUtil.GetStationFullNames("Tampere", "Helsinki");
+            string[] actual = APIUtil.GetStationShortNames("Tampere", "Helsinki");
 
 
          Assert.AreEqual(expected[0], actual[0]);
