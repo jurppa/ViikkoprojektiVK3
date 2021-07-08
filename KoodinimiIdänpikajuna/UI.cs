@@ -103,7 +103,7 @@ namespace KoodinimiIdänpikajuna
             Console.WriteLine("Pääteasema: ");
             var station2 = Console.ReadLine();
 
-            if (!hasSpecialChar(station1) && !hasSpecialChar(station2))
+            if (!hasSpecialNumberChar(station1) && !hasSpecialNumberChar(station2))
             {
                 Console.WriteLine("Anna päivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
                 var input = Console.ReadLine();
@@ -141,7 +141,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna junan numero: ");
             var input = Console.ReadLine();
-            if (!hasLetterChar(input))
+            if (!hasSpecialLetterChar(input))
             {
                 var trainNumber = Convert.ToInt32(input);
                 Console.WriteLine("Anna lähtöpäivämäärä(dd.mm.yyyy) tai paina 'enter' jos haluat nykyisen päivän: ");
@@ -175,7 +175,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna aseman nimi: ");
             var station = Console.ReadLine();
-            if(!hasSpecialChar(station))
+            if(!hasSpecialNumberChar(station))
             {
                 string[] stn = APIUtil.GetStationShortNames(station);
                 station = stn[0];
@@ -211,7 +211,7 @@ namespace KoodinimiIdänpikajuna
         {
             Console.WriteLine("Anna Junan numero: ");
             var input = Console.ReadLine();
-            if(!hasLetterChar(input))
+            if(!hasSpecialLetterChar(input))
             {
                 int tnumber = Convert.ToInt32(input);
                 var live = APIUtil.TrackLiveTrainLocation(tnumber);
@@ -273,7 +273,7 @@ namespace KoodinimiIdänpikajuna
             Console.ReadKey();
             Console.Clear();
         }
-        public static bool hasSpecialChar(string input)
+        public static bool hasSpecialNumberChar(string input)
         {
             string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,1234567890";
             foreach (var item in specialChar)
@@ -283,7 +283,7 @@ namespace KoodinimiIdänpikajuna
 
             return false;
         }
-        public static bool hasLetterChar(string input)
+        public static bool hasSpecialLetterChar(string input)
         {
             string letterChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,abcdefghijklmnopqrstyvxzåäö";
             foreach (var item in letterChar)
