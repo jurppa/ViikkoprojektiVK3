@@ -181,17 +181,24 @@ namespace KoodinimiIdänpikajuna
                 station = stn[0];
                 var demTrains = APIUtil.GoingThrough(station);
                 
-                Console.WriteLine();
-                for (int i = 0; i < demTrains.Count -1; i++)
+                if(demTrains.Count != 0)
                 {
-                    int lastIndex = demTrains[i].timeTableRows.Count;
+                    Console.WriteLine();
+                    for (int i = 0; i < demTrains.Count -1; i++)
+                    {
+                        int lastIndex = demTrains[i].timeTableRows.Count;
 
-                    Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
-                    Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[0].scheduledTime));                        Console.WriteLine();
+                        Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
+                        Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[0].scheduledTime));                        Console.WriteLine();
 
+                    }
+                    Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
+                    Console.ReadKey();
                 }
-                Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
-                Console.ReadKey();
+                else
+                {
+                    hasFaultInINput();
+                }
             }
             else
             {
