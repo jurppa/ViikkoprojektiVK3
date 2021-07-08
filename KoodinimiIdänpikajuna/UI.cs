@@ -115,7 +115,7 @@ namespace KoodinimiIdänpikajuna
                     //if (trainsFromTo[i].timeTableRows[i].type == "ARRIVAL") { continue; }
 
                     Console.WriteLine();
-                    Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[i].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
+                    Console.WriteLine(trainsFromTo[i].trainType + " " + trainsFromTo[i].trainNumber + " | " + trainsFromTo[i].timeTableRows[0].type + " | " + trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime());
                     Console.WriteLine(APIUtil.IsTrainLate(trainsFromTo[i].timeTableRows[i].liveEstimateTime, trainsFromTo[i].timeTableRows[i].scheduledTime.ToLocalTime()));
                     Console.WriteLine();
                     Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
