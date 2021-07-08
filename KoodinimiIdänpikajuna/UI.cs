@@ -145,8 +145,7 @@ namespace KoodinimiIdänpikajuna
                 input = Console.ReadLine();
                 var date = DateTime.Parse(DateTimeNow(input));
                 var wagon = APIUtil.GetWagonInfo(date, trainNumber);
-                if (wagon != null)
-                {
+                
                     Console.WriteLine();
                     Console.WriteLine("Vaunun sisältämät palvelut: ");
                     Console.WriteLine();
@@ -158,12 +157,7 @@ namespace KoodinimiIdänpikajuna
                     }
                     Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
                     Console.ReadKey();
-                }
-                else
-                {
-                    hasFaultInINput();
-                }
-            }
+              
             else
             {
                 hasFaultInINput();
