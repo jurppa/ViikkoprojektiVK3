@@ -140,18 +140,32 @@ namespace KoodinimiIdänpikajuna
 
 
             var res = JsonConvert.DeserializeObject<Train>(json);
-            var serviceWagons = res.journeySections[0].wagons;
-
-            foreach (var item in serviceWagons)
+            try
             {
-                if (item.catering == true) { servicesInWagons["Catering"] = true; }
-                if (item.luggage == true) { servicesInWagons["Matkatavarat"] = true; }
-                if (item.playground == true) { servicesInWagons["Lasten leikkialue"] = true; }
-                if (item.smoking == true) { servicesInWagons["Tupakointi"] = true; }
-                if (item.pet == true) { servicesInWagons["Lemmikkipaikka"] = true; }
+                var serviceWagons = res.journeySections[0].wagons;
 
+                foreach (var item in serviceWagons)
+                {
+                    if (item.catering == true) { servicesInWagons["Catering"] = true; }
+                    if (item.luggage == true) { servicesInWagons["Matkatavarat"] = true; }
+                    if (item.playground == true) { servicesInWagons["Lasten leikkialue"] = true; }
+                    if (item.smoking == true) { servicesInWagons["Tupakointi"] = true; }
+                    if (item.pet == true) { servicesInWagons["Lemmikkipaikka"] = true; }
+
+                }
+                return servicesInWagons;
             }
-            return servicesInWagons;
+            catch (Exception)
+            {
+
+                UI ui = new UI();
+
+                ui.hasFaultInINput();
+
+                ui.StartMenu();
+            }
+
+            return new Dictionary<string, bool>();
             /// <summary>
             /// servicesInWagons palauttaa käyttäjälle hänen hakuehtojen mukaisen junan jos käyttäjällä toiveissa esimerkiksi lemmikkivaunu.
             /// </summary>
