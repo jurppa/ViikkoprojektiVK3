@@ -35,8 +35,6 @@ namespace KoodinimiIdänpikajuna
             }
             else
             {
-
-
                 char firstChar = input[0];
                 bool isNumber = Char.IsDigit(firstChar);
 
@@ -109,8 +107,6 @@ namespace KoodinimiIdänpikajuna
                 var input = Console.ReadLine();
                 DateTime date = DateTime.Parse(DateTimeNow(input));
 
-
-
                 List<Train> trainsFromTo = APIUtil.TrainFromTo(station1, station2, date);
                 for (int i = 0; i < trainsFromTo.Count; i++)
                 {
@@ -123,7 +119,6 @@ namespace KoodinimiIdänpikajuna
                     Console.WriteLine();
                     Console.WriteLine("Matkan kesto: " + (trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime));
                     //Console.WriteLine(trainsFromTo[i].timeTableRows[lastIndex - 1].scheduledTime - trainsFromTo[i].timeTableRows[0].scheduledTime);
-
                 }
                 Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
                 Console.ReadKey();
@@ -190,7 +185,6 @@ namespace KoodinimiIdänpikajuna
 
                         Console.WriteLine(demTrains[i].trainType + " " + demTrains[i].trainNumber + " Pääteasema: " + APIUtil.ShortNameToFullName(demTrains[i].timeTableRows[lastIndex -1].stationShortCode));
                         Console.WriteLine(APIUtil.IsTrainLate(demTrains[i].timeTableRows[i].actualTime, demTrains[i].timeTableRows[0].scheduledTime));                        Console.WriteLine();
-
                     }
                     Console.WriteLine("Paina mitä tahansa näppäintä palataksesi menuun.");
                     Console.ReadKey();
@@ -290,7 +284,6 @@ namespace KoodinimiIdänpikajuna
             {
                 if (input.Contains(item)) return true;
             }
-
             return false;
         }
     }
